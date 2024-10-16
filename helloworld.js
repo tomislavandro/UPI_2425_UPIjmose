@@ -1,1 +1,1 @@
-console.log("UPIJMO SE")!
+console.log("UPIJMO SE!")
