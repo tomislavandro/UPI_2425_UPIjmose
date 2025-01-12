@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Koristi useNavigate umjesto useHistory
 import "./styles/categories.css";
-//pozdrav canicu
 const Categories = () => {
     const [categories, setCategories] = useState([]);
     const navigate = useNavigate(); // Koristi useNavigate za preusmjeravanje
