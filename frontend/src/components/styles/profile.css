@@ -1,0 +1,117 @@
+.profile-container {
+    max-width: 600px; /* Maksimalna širina kontejnera */
+    margin: 0 auto; /* Centriraj kontejner */
+    padding: 20px; /* Unutarnji razmak */
+    border: 1px solid #ddd; /* Granična linija */
+    border-radius: 8px; /* Zaobljeni kutovi */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lagana sjena */
+    /* background-color: #fff; */
+}
+
+h2 {
+    text-align: center; /* Centriraj naslov */
+    color: #333; /* Tamno siva boja */
+}
+
+h3 {
+    margin-top: 20px; /* Razmak iznad podnaslova */
+    color: #555; /* Siva boja */
+}
+
+form {
+    display: flex; /* Koristi flexbox */
+    flex-direction: column; /* Stupićasti raspored */
+}
+
+label {
+    margin-bottom: 5px; /* Razmak ispod oznake */
+    font-weight: bold; /* Podebljane oznake */
+}
+
+input {
+    padding: 10px; /* Unutarnji razmak u input poljima */
+    margin-bottom: 15px; /* Razmak ispod input polja */
+    border: 1px solid #ddd; /* Granična linija input polja */
+    border-radius: 4px; /* Zaobljeni kutovi input polja */
+    font-size: 16px; /* Veličina fonta */
+}
+
+button {
+    padding: 10px; /* Unutarnji razmak unutar gumba */
+    background-color: #007bff; /* Plava pozadina */
+    color: white; /* Bijela boja teksta */
+    border: none; /* Bez granične linije */
+    border-radius: 4px; /* Zaobljeni kutovi gumba */
+    cursor: pointer; /* Promijeni pokazivač na ruku */
+    font-size: 16px; /* Veličina fonta gumba */
+}
+
+button:hover {
+    background-color: #0056b3; /* Tamnija plava boja kada je gumb iznad */
+}
+
+.error {
+    color: red; /* Crvena boja za greške */
+    text-align: center; /* Centriraj grešku */
+}
+
+
+.profile-container {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.error {
+    color: red;
+}
+
+.review-card {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    /* background-color: #f5f5f5; */
+}
+
+.review-buttons {
+    margin-top: 10px;
+}
+
+.edit-button {
+    margin-right: 10px;
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.delete-button {
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.logout-button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #f44336;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+.edit-review-container {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-top: 20px;
+    border-radius: 5px;
+    /* background-color: #f5f5f5; */
+}
