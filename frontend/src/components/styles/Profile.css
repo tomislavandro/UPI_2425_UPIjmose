@@ -1,58 +1,58 @@
 .profile-container {
-    max-width: 600px; /* Maksimalna širina kontejnera */
-    margin: 0 auto; /* Centriraj kontejner */
-    padding: 20px; /* Unutarnji razmak */
-    border: 1px solid #ddd; /* Granična linija */
-    border-radius: 8px; /* Zaobljeni kutovi */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Lagana sjena */
-    /* background-color: #fff; */
+    max-width: 600px;
+    margin: 0 auto; 
+    padding: 20px;
+    border: 1px solid #ddd; 
+    border-radius: 8px; 
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+   
 }
 
 h2 {
-    text-align: center; /* Centriraj naslov */
-    color: #333; /* Tamno siva boja */
+    text-align: center; 
+    color: #333; 
 }
 
 h3 {
-    margin-top: 20px; /* Razmak iznad podnaslova */
-    color: #555; /* Siva boja */
+    margin-top: 20px; 
+    color: #555; 
 }
 
 form {
-    display: flex; /* Koristi flexbox */
-    flex-direction: column; /* Stupićasti raspored */
+    display: flex;
+    flex-direction: column; 
 }
 
 label {
-    margin-bottom: 5px; /* Razmak ispod oznake */
-    font-weight: bold; /* Podebljane oznake */
+    margin-bottom: 5px; 
+    font-weight: bold;
 }
 
 input {
-    padding: 10px; /* Unutarnji razmak u input poljima */
-    margin-bottom: 15px; /* Razmak ispod input polja */
-    border: 1px solid #ddd; /* Granična linija input polja */
-    border-radius: 4px; /* Zaobljeni kutovi input polja */
-    font-size: 16px; /* Veličina fonta */
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ddd; 
+    border-radius: 4px; 
+    font-size: 16px; 
 }
 
 button {
-    padding: 10px; /* Unutarnji razmak unutar gumba */
-    background-color: #007bff; /* Plava pozadina */
-    color: white; /* Bijela boja teksta */
-    border: none; /* Bez granične linije */
-    border-radius: 4px; /* Zaobljeni kutovi gumba */
-    cursor: pointer; /* Promijeni pokazivač na ruku */
-    font-size: 16px; /* Veličina fonta gumba */
+    padding: 10px; 
+    background-color: 
+    color: white; 
+    border: none; 
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px; 
 }
 
 button:hover {
-    background-color: #0056b3; /* Tamnija plava boja kada je gumb iznad */
+    background-color: #0056b3;
 }
 
 .error {
-    color: red; /* Crvena boja za greške */
-    text-align: center; /* Centriraj grešku */
+    color: red; 
+    text-align: center; 
 }
 
 
@@ -60,6 +60,8 @@ button:hover {
     padding: 20px;
     max-width: 600px;
     margin: 0 auto;
+    margin-left: 800px;
+    margin-top: 200px;
 }
 
 .error {
@@ -113,5 +115,5 @@ button:hover {
     padding: 15px;
     margin-top: 20px;
     border-radius: 5px;
-    /* background-color: #f5f5f5; */
+   
 }
