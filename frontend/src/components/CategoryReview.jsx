@@ -28,6 +28,22 @@ const Reviews = () => {
         setReviews((prevReviews) => [...prevReviews, newReview]);
     };
 
+    const handleDeleteReview = async (reviewId) => {
+        try {
+            const response = await fetch(`http://localhost:1000/reviews/${reviewId}`, {
+                method: 'DELETE',
+            });
+            const data = await response.json();
+            if (data.success) {
+                setReviews((prevReviews) => prevReviews.filter(review => review._id !== reviewId));
+            } else {
+                console.error(data.message);
+            }
+        } catch (error) {
+            console.error("Error deleting review:", error);
+        }
+    };
+
     return (
         <div className="reviews-container">
             <h2>Recenzije za kategoriju</h2>
@@ -38,6 +54,7 @@ const Reviews = () => {
                         <h4>{review.location_id.name}</h4>
                         <p>{review.comment}</p>
                         <p>Ocjena: {review.rating}</p>
+                        <button onClick={() => handleDeleteReview(review._id)}>Obriši</button>
                     </div>
                 ))
             ) : (
