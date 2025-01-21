@@ -29,7 +29,7 @@
     font-weight: bold;
     position: relative;
     overflow: hidden;
-    background-color: #f4a460;
+    background-color: inherit;
     background-blend-mode: overlay;
     transition: transform 0.6s ease-in-out;
 }
@@ -40,4 +40,9 @@
 }
 .category-button:hover {
     transform: scale(1.1);
+    background-color: wheat;
+   color: black;
+}
+.category-button:hover .category-button-text {
+    color:black;
 }
