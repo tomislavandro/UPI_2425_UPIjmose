@@ -87,6 +87,7 @@ router.get("/with-averages", async (req, res) => {
             return {
                 _id: category._id,
                 name: category.name,
+                image: category.image,
                 locations: category.locations.map(location => {
                     const ratings = location.reviews.map(review => review.rating);
                     const averageRating = ratings.length
@@ -107,42 +108,6 @@ router.get("/with-averages", async (req, res) => {
         res.status(500).json({ success: false, message: 'Greška pri dohvatu kategorija' });
     }
 });
-
-
-// // Nova ruta za dohvaćanje lokacija po kategoriji
-// router.get("/:id/locations", async (req, res) => {
-//     const { id } = req.params;
-
-//     if (!mongoose.Types.ObjectId.isValid(id)) {
-//         return res.status(404).json({ success: false, message: "Invalid category id!" });
-//     }
-
-//     try {
-//         const locations = await Location.find({ category_id: id }).populate('reviews');
-        
-//         const uniqueLocations = [...new Map(locations.map(location => [location._id, location])).values()]; // Uklanjanje duplikata
-
-//         const locationsWithAverageRating = uniqueLocations.map(location => {
-//             const ratings = location.reviews.map(review => review.rating);
-//             const averageRating = ratings.length
-//                 ? (ratings.reduce((a, b) => a + b, 0) / ratings.length).toFixed(1)
-//                 : 'Nema ocjena';
-
-//             return {
-//                 _id: location._id,
-//                 name: location.name,
-//                 average_rating: averageRating // Prosječna ocjena
-//             };
-//         });
-
-//         return res.status(200).json({ success: true, data: locationsWithAverageRating });
-//     } catch (error) {
-//         console.error("Error fetching locations:", error);
-//         return res.status(500).json({ success: false, message: "Server Error" });
-//     }
-// });
-
-
 
 
 export default router;
