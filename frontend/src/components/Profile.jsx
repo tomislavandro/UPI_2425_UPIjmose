@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import Cookies from "js-cookie";
+import './styles/Profile.css';
 
 const Profile = () => {
+    const [userData, setUserData] = useState({
+        username: '',
+        email: '',
+        password: '',
+    });
     const [reviews, setReviews] = useState([]);
+    const [error, setError] = useState('');
     const [editReview, setEditReview] = useState(null);
     const [editedComment, setEditedComment] = useState('');
     const [editedRating, setEditedRating] = useState('');
 
+    const getCookie = (name) => Cookies.get(name);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -13,7 +22,8 @@ const Profile = () => {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                credentials: "include"
             });
 
             const data = await response.json();
@@ -26,6 +36,8 @@ const Profile = () => {
                     password: '',
                 });
                 setReviews(data.user.reviews || []);
+            } else {
+                setError(data.message);
             }
         };
 
@@ -40,16 +52,39 @@ const Profile = () => {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(userData)
+                body: JSON.stringify(userData),
+                credentials: "include"
             });
 
             const data = await response.json();
             if (data.success) {
                 alert('Podaci su uspješno ažurirani');
                 setUserData({ ...userData, password: '' });
-            } else
+            } else {
+                setError(data.message);
+            }
         } catch (error) {
             console.error('Greška prilikom ažuriranja:', error);
+            setError('Došlo je do greške prilikom ažuriranja.');
+        }
+    };
+
+    const handleDeleteReview = async (reviewId) => {
+        try {
+            const response = await fetch(`http://localhost:1000/reviews/${reviewId}`, {
+                method: 'DELETE',
+                credentials: "include"
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                setReviews(reviews.filter((review) => review._id !== reviewId));
+            } else {
+                setError(data.message);
+            }
+        } catch (error) {
+            console.error('Greška prilikom brisanja recenzije:', error);
+            setError('Došlo je do greške prilikom brisanja recenzije.');
         }
     };
 
@@ -70,7 +105,8 @@ const Profile = () => {
                 body: JSON.stringify({
                     comment: editedComment,
                     rating: editedRating,
-                })
+                }),
+                credentials: "include"
             });
 
             const data = await response.json();
@@ -81,13 +117,35 @@ const Profile = () => {
                 setEditReview(null); // Zatvori formu za uređivanje
                 setEditedComment('');
                 setEditedRating('');
+            } else {
+                setError(data.message);
             }
         } catch (error) {
             console.error('Greška prilikom ažuriranja recenzije:', error);
+            setError('Došlo je do greške prilikom ažuriranja recenzije.');
         }
     };
 
-    
+    const handleLogout = async () => {
+        try {
+            const response = await fetch('http://localhost:1000/users/logout', {
+                method: 'POST',
+                credentials: "include"
+            });
+
+            const data = await response.json();
+            if (data.success) {
+                Cookies.remove('user');
+                alert('Uspješno ste se odjavili');
+                window.location.href = '/login';
+            } else {
+                setError(data.message);
+            }
+        } catch (error) {
+            console.error('Greška prilikom odjave:', error);
+            setError('Došlo je do greške prilikom odjave.');
+        }
+    };
 
     return (
         <div className="profile-container">
@@ -122,7 +180,27 @@ const Profile = () => {
                 </div>
                 <button type="submit">Ažuriraj</button>
             </form>
+            <button onClick={handleLogout} className="logout-button">Odjavi se</button>
             <h3>Moje recenzije</h3>
+            {reviews && reviews.length > 0 ? (
+                reviews.map((review) => (
+                    <div key={review._id} className="review-card">
+                        <h4>{review.location_id ? review.location_id.name : 'Nepoznato mjesto'}</h4>
+                        <p><strong>Ocjena:</strong> {review.rating}</p>
+                        <p>{review.comment ? review.comment : 'bez komentara'}</p>
+                        <div className="review-buttons">
+                            <button onClick={() => handleEditReview(review)} className="edit-button">
+                                Uredi
+                            </button>
+                            <button onClick={() => handleDeleteReview(review._id)} className="delete-button">
+                                Obriši
+                            </button>
+                        </div>
+                    </div>
+                ))
+            ) : (
+                <p>Nema recenzija za prikaz.</p>
+            )}
 
             {editReview && (
                 <div className="edit-review-container">
