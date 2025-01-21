@@ -25,11 +25,13 @@ app.use("/categories", CategoryRoutes)
 app.use("/locations", LocationRoutes)
 app.use("/users", UserRoutes)
 app.use("/reviews", ReviewRoutes)
+    
+connectDB();
 
-app.listen(PORT, () => {
-    connectDB()
-    console.log(`Server started at http://localhost:${PORT}`)
-});
-
+if(process.env.NODE_ENV !== 'test') {
+    app.listen(PORT, () => {
+        console.log(`Server started at http://localhost:${PORT}`)
+    });
+}
 
 export default app;
