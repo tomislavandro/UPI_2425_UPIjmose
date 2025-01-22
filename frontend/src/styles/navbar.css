@@ -1,57 +1,54 @@
 .navbar {
-     display: flex;
-    justify-content: space-between; 
+    display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: tomato;
-    padding: 2px; 
-    position: fixed; 
-    width: 100%; 
-    top: 0; 
-    z-index: 1000; 
-    border: 1px solid #ccc; 
+    padding: 2px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border: 1px solid #ccc;
     transition: transform 0.3s ease-in-out;
-    height: 50px;
+    height: 8%;
 }
 
 .navbar-content {
     display: flex;
-    justify-content: space-between; 
+    justify-content: space-between;
     width: 100%;
-
 }
 
 .navbar-item {
-     color: black; 
-    text-decoration: none; 
-    padding: 10px 15px;
+    color: black;
+    text-decoration: none;
+    padding: 6px;
     transition: transform 0.6s ease-in-out;
 }
 
 .navbar-item:hover {
-    transform: scale(1.1); 
-    border-radius: 5px; 
-}
-
-.navbar-right {
-    display: flex; 
-    gap: 15px; 
-    margin-left: auto; 
-    margin-top: 20px;
-   
-}
-.navbar-left{
-    margin-top: 40px;
-    font-style: bold;
-    transition: transform 0.6s ease-in-out
-}
-.navbar-left:hover{
     transform: scale(1.1);
-}
-.profile-icon {
-    font-size: 24px;
+    border-radius: 5px;
 }
 
 .navbar-right {
     display: flex;
     gap: 15px;
+    margin-left: auto;
+    margin-top: 1%;
+    margin-right: 1%;
+}
+
+.navbar-left {
+    margin-top: 2%;
+    font-style: bold;
+    transition: transform 0.6s ease-in-out;
+}
+
+.navbar-left:hover {
+    transform: scale(1.1);
+}
+
+.profile-icon {
+    font-size: 200%;
 }
