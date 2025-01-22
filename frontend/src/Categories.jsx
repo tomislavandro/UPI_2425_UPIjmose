@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom'; // Koristi useNavigate umjesto useHistory
 import "./styles/categories.css";
+
 const Categories = () => {
     const [categories, setCategories] = useState([]);
     const navigate = useNavigate(); // Koristi useNavigate za preusmjeravanje
@@ -32,16 +33,25 @@ const Categories = () => {
             <div className="category-buttons">
                 {categories.map((category) => (
                     <button
-                        key={category._id}
-                        className="category-button"
-                        onClick={() => handleCategoryClick(category._id)}
-                    >
-                        {category.name}
-                    </button>
+                    key={category._id}
+                    className="category-button"
+                    onClick={() => handleCategoryClick(category._id)}
+                    style={{
+                        backgroundImage: `url(${category.image})`,
+                        backgroundSize: 'cover',
+                        backgroundPosition: 'center',
+                        color: 'white',
+                        height: '200px', 
+                        width: '200px'
+                    }}
+                >
+                    {category.name}
+                </button>
                 ))}
             </div>
         </div>
     );
+    
 };
 
 export default Categories;
