@@ -17,7 +17,7 @@ Ovo je web aplikacija za recenzije koja omogućuje korisnicima pregled i dodavan
 
 ##Kako pokrenuti aplikaciju?
 
-1. Kloniraj repozitorij
+1. Kloniraj repozitorij -> `git clone https://github.com/tomislavandro/UPI_2425_UPIjmose.git`
 2. odi u mapu projekta u terminalu i pokreni naredbu `npm install`
 3. odi u mapu frontend u terminalu unutar projekta (`cd frontend`) i pokreni naredbu `npm install`
 4. za pokretanje aplikacije udite u glavnu mapu projekta u terminalu i pokrenite naredu `npm run all`
