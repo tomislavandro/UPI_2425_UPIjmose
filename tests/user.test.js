@@ -9,8 +9,21 @@ describe("korisnicke rute", () => {
         await mongoose.connect(process.env.MONGO_URI);
     })
 
+    beforeEach(async () => {
+        // Brisanje korisnika prije svakog testa
+        await User.deleteOne({ email: 'newuser@example.com' });
+        await User.deleteOne({ email: 'unique@example.com' });
+        await User.deleteOne({email: 'test@example.com'});
+    });
+
+    afterEach(async () => {
+        // Brisanje korisnika nakon svakog testa
+        await User.deleteOne({ email: 'newuser@example.com' });
+        await User.deleteOne({ email: 'unique@example.com' });
+        await User.deleteOne({email: 'test@example.com'});
+    });
+
     afterAll(async () => {
-        await User.deleteOne({email: "newuser@example.com"})
         await mongoose.connection.close();
     })
 
