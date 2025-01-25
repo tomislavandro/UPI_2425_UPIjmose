@@ -1,5 +1,7 @@
+// filepath: ./upijmo_se_projekt/.babelrc
 {
-    "presets": [
-        "@babel/preset-env"
-    ]
+  "presets": [
+    "@babel/preset-env",
+    "@babel/preset-react"
+  ]
 }
