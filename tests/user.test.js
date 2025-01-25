@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 import app from "../backend/server.js"
 import User from "../backend/models/user.model.js";
 
-
 describe("korisnicke rute", () => {
     beforeAll(async () => {
         await mongoose.connect(process.env.MONGO_URI);
@@ -27,7 +26,6 @@ describe("korisnicke rute", () => {
         await mongoose.connection.close();
     })
 
-
     it("stvaranje novog korisnika", async () => {
         const res = await request(app)
             .post("/users")
@@ -39,7 +37,6 @@ describe("korisnicke rute", () => {
         expect(res.body.data).toHaveProperty('email', 'newuser@example.com');
         expect(res.body.data).toHaveProperty('username', 'newuser');
     })
-
 
     it("trebalo bi vratiti 400 ako nedostaju polja", async () => {
         const res = await request(app)
@@ -82,6 +79,4 @@ describe("korisnicke rute", () => {
         expect(res.body).toHaveProperty('success', false);
         expect(res.body).toHaveProperty('message', 'Username already exists!');
     });
-
-
 })
