@@ -192,29 +192,29 @@ Opis testova:
 
 ## Frontend
 
-### 1. **Testovi za Signup**
+### 1. **Testovi za registraciju**
 Testovi za funkcionalnost registracije korisnika.
 
 Datoteke:
-- `signup.test.jsx` - Testiranje renderiranja i funkcionalnosti signup forme.
+- `signup.test.jsx` - Testiranje renderiranja i funkcionalnosti registracijske forme.
 
 #### Unit testovi:
 
 Opis testova:
 
-#### Test 1: Renderiranje signup forme
-- Cilj: Provjeriti ispravno renderiranje signup forme.
+#### Test 1: Renderiranje registracijske forme
+- Cilj: Provjeriti ispravno renderiranje registracijske forme.
 ##### Opis:
- 1. Test provodi renderiranje signup forme.
- 2. Provodi se provjera da li su svi potrebni elementi kao što su polja za unos imena, e-maila, lozinke i gumb za registraciju prisutni na stranici.
+ 1. Test provodi renderiranje registracijske forme.
+ 2. Provodi se provjera jesu li svi potrebni elementi kao što su polja za unos imena, e-maila, lozinke i gumb za registraciju prisutni na stranici.
 ##### Očekivani rezultat:
  -Forma treba biti pravilno renderirana, s prisutnim svim potrebnim poljima i gumbom za registraciju.
 
 #### Test 2: Provjera funkcionalnosti registracije
-- Cilj: Provjeriti ispravno funkcioniranje signup forme.
+- Cilj: Provjeriti ispravno funkcioniranje registracijske forme.
 ##### Opis:
  1. Test simulira unos podataka u formu (ime, e-mail, lozinka).
- 2. Provodi se provjera da li su vrijednosti pravilno postavljene u inputima.
+ 2. Provodi se provjera jesu li vrijednosti pravilno postavljene u inputima.
 ##### Očekivani rezultat:
  - Nakon popunjavanja forme, korisnik bi trebao moći unijeti podatke (ime, e-mail, lozinku) i odabrati opciju za registraciju.
 
@@ -255,7 +255,7 @@ Opis testova:
 
 #### Unit testovi:
 
-#### Test 1: Renderiranje liste recenzija
+#### Test 1: Renderiranje liste recenzija kada nema recenzija u kategoriji
  - Cilj: Provjeriti ispravno renderiranje liste recenzija.
 ##### Opis:
  1. Test provodi renderiranje komponente ReviewList koja prikazuje recenzije.
@@ -341,6 +341,8 @@ Opis testova:
  2. Provodi se provjera da li je API poziv za ažuriranje korisničkih podataka ispravno pozvan.
 ##### Očekivani rezultat:
  - Podaci o korisniku trebaju biti uspješno ažurirani putem API poziva.
+
+#### End-to-end testovi:
 
 #### Test 6: Odjava korisnika
  - Cilj: Provjeriti ispravnu funkcionalnost odjave korisnika.
