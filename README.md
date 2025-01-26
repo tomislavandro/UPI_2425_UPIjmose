@@ -22,8 +22,7 @@ Ovo je web aplikacija za recenzije koja omogućuje korisnicima pregled i dodavan
 4. za pokretanje aplikacije, vrati se u glavnu mapu projekta u terminalu i pokreni naredu: `npm run all`
 
 ## Testiranje aplikacije
-Korištene tehnologije:
-- **Backend** -> oristi se `jest` za testiranje backend logike, API endpointova i drugih server-side funkcionalnosti
+- **Backend** -> koristi se `jest` za testiranje backend logike, API endpointova i drugih server-side funkcionalnosti
 - **Frontend** -> `vitest` i `jest` koriste se za testiranje React komponenti, dok `react-testing-library` omogućuje testiranje interakcije s DOM-om i simulaciju korisničkog sučelja
 - **cijela aplikacija** -> `cypress` je korišten za testiranje funkcionalnosti cijele aplikacije, simuliranje korisničkog iskustva i osiguranje pravilnog rada svih dijelova sustava
 
