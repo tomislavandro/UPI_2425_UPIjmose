@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { useLocation } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom'; // za pozadinu
 import Cookies from "js-cookie";
 import './App.css';
 import Categories from './Categories.jsx';
