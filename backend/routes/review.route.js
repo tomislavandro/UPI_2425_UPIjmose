@@ -45,6 +45,12 @@ router.post("/", async (req, res) => {
             return res.status(400).json({ success: false, message: "Location does not exist!" });
         }
 
+        // Provjeri postoji li već recenzija za ovu lokaciju od istog korisnika
+        const existingReview = await Review.findOne({ user_id: review.user_id, location_id: review.location_id });
+        if (existingReview) {
+            return res.status(400).json({ success: false, message: "You have already reviewed this location!" });
+        }
+
         await newReview.save();
 
         await User.findByIdAndUpdate(
