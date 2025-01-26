@@ -11,7 +11,6 @@ const Login = () => {
     const [successMessage, setSuccessMessage] = useState(''); // Dodano stanje za uspjeh
     const navigate = useNavigate(); // Hook za navigaciju
 
-
     // Provjera je li korisnik već prijavljen
     useEffect(() => {
         const userCookie = Cookies.get('user');
