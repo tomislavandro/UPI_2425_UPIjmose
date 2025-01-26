@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import User from "../models/user.model.js";
+import validator from "validator"; // novo
 
 const router = express.Router();
 
@@ -22,6 +23,12 @@ router.post("/", async (req, res) => {
     if (!user.username || !user.email || !user.password) {
         return res.status(400).json({ success: false, message: "Please provide all fields" });
     }
+
+    // NOVE LINIJE: Provjera ispravnog formata emaila koristeći validator
+    if (!validator.isEmail(user.email)) {
+        return res.status(400).json({ success: false, message: "Email not in correct format" });
+    }
+
 
     // Provjera jedinstvenosti emaila
     const existingUser = await User.findOne({ email: user.email });
@@ -90,6 +97,19 @@ router.delete("/:id", async (req, res) => {
 
     try {
         await User.findByIdAndDelete(id);
+        res.status(200).json({ success: true, message: "User deleted" })
+    } catch (error) {
+        console.log("error in deleting user: ", error.message)
+        res.status(500).json({ success: false, message: "Server Error" })
+    }
+})
+
+// mozda ce se moci obrisati ruta
+router.delete("/by-name/:name", async (req, res) => {
+    const { name } = req.params
+
+    try {
+        await User.deleteOne({username: name});
         res.status(200).json({ success: true, message: "User deleted" })
     } catch (error) {
         console.log("error in deleting user: ", error.message)
@@ -171,6 +191,13 @@ router.put('/update', async (req, res) => {
 
     const userData = JSON.parse(userCookie);
     const { username, email, password } = req.body; // Ovdje možeš dodati i novu lozinku ako je potrebna
+
+
+    // NOVE LINIJE: Provjera ispravnog formata emaila koristeći validator
+    if (email && !validator.isEmail(email)) {
+        return res.status(400).json({ success: false, message: "Email not in correct format" });
+    }
+
 
     try {
         const updatedUser = await User.findOneAndUpdate(
