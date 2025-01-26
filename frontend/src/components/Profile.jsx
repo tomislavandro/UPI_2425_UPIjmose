@@ -111,7 +111,7 @@ const Profile = () => {
 
             const data = await response.json();
             if (data.success) {
-                setReviews(reviews.map(review => 
+                setReviews(reviews.map(review =>
                     review._id === editReview._id ? { ...review, comment: editedComment, rating: editedRating } : review
                 ));
                 setEditReview(null); // Zatvori formu za uređivanje
@@ -149,86 +149,91 @@ const Profile = () => {
 
     return (
         <div className="profile-container">
-            <h2>Profil</h2>
-            {error && <p className="error">{error}</p>}
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label htmlFor = "username">Korisničko ime:</label>
-                    <input id = "username"
-                        type="text"
-                        value={userData.username}
-                        onChange={(e) => setUserData({ ...userData, username: e.target.value })}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor = "email">Email:</label>
-                    <input id = "email"
-                        type="email"
-                        value={userData.email}
-                        onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-                        required
-                    />
-                </div>
-                <div>
-                    <label htmlFor = "password">Lozinka:</label>
-                    <input id = "password"
-                        type="password"
-                        value={userData.password}
-                        onChange={(e) => setUserData({ ...userData, password: e.target.value })}
-                    />
-                </div>
-                <button type="submit">Ažuriraj</button>
-            </form>
-            <button onClick={handleLogout} className="logout-button">Odjavi se</button>
-            <h3>Moje recenzije</h3>
-            {reviews && reviews.length > 0 ? (
-                reviews.map((review) => (
-                    <div key={review._id} className="review-card">
-                        <h4>{review.location_id ? review.location_id.name : 'Nepoznato mjesto'}</h4>
-                        <p><strong>Ocjena:</strong> {review.rating}</p>
-                        <p>{review.comment ? review.comment : 'bez komentara'}</p>
-                        <div className="review-buttons">
-                            <button onClick={() => handleEditReview(review)} className="edit-button">
-                                Uredi
-                            </button>
-                            <button onClick={() => handleDeleteReview(review._id)} className="delete-button">
-                                Obriši
-                            </button>
-                        </div>
+            <div className="profile-info">
+                <h2>Profil</h2>
+                {error && <p className="error">{error}</p>}
+                <form onSubmit={handleSubmit}>
+                    <div>
+                        <label htmlFor="username">Korisničko ime:</label>
+                        <input id="username"
+                            type="text"
+                            value={userData.username}
+                            onChange={(e) => setUserData({ ...userData, username: e.target.value })}
+                            required
+                        />
                     </div>
-                ))
-            ) : (
-                <p>Nema recenzija za prikaz.</p>
-            )}
+                    <div>
+                        <label htmlFor="email">Email:</label>
+                        <input id="email"
+                            type="email"
+                            value={userData.email}
+                            onChange={(e) => setUserData({ ...userData, email: e.target.value })}
+                            required
+                        />
+                    </div>
+                    <div>
+                        <label htmlFor="password">Lozinka:</label>
+                        <input id="password"
+                            type="password"
+                            value={userData.password}
+                            onChange={(e) => setUserData({ ...userData, password: e.target.value })}
+                        />
+                    </div>
+                    <button type="submit">Ažuriraj</button>
+                </form>
+                <button onClick={handleLogout} className="logout-button">Odjavi se</button>
+            </div>
 
-            {editReview && (
-                <div className="edit-review-container">
-                    <h4>Uredi recenziju</h4>
-                    <form onSubmit={handleUpdateReview}>
-                        <div>
-                            <label htmlFor="ocjena">Ocjena:</label>
-                            <input id = "ocjena"
-                                type="number"
-                                value={editedRating}
-                                min={1} max={5}
-                                onChange={(e) => setEditedRating(e.target.value)}
-                                required
-                            />
+            <div className="reviews-section">
+                <h2 style = {{textAlign: "center"}}>Moje recenzije</h2>
+                {reviews && reviews.length > 0 ? (
+                    reviews.map((review) => (
+                        <div key={review._id} className="review-card">
+                            <h4>{review.location_id ? review.location_id.name : 'Nepoznato mjesto'}</h4>
+                            <p><strong>Ocjena:</strong> {review.rating}</p>
+                            <p>{review.comment ? review.comment : 'bez komentara'}</p>
+                            <div className="review-buttons">
+                                <button onClick={() => handleEditReview(review)} className="edit-button">
+                                    Uredi
+                                </button>
+                                <button onClick={() => handleDeleteReview(review._id)} className="delete-button">
+                                    Obriši
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <label htmlFor = "comment" id = "komentar">Komentar:</label>
-                            <textarea id = "comment"
-                                value={editedComment}
-                                onChange={(e) => setEditedComment(e.target.value)}
-                                required
-                            />
-                        </div>
-                        <button type="submit">Spremi izmjene</button>
-                        <button type="button" onClick={() => setEditReview(null)}>Otkaži</button>
-                    </form>
-                </div>
-            )}
+                    ))
+                ) : (
+                    <p>Nema recenzija za prikaz.</p>
+                )}
+
+                {editReview && (
+                    <div className="edit-review-container">
+                        <h4>Uredi recenziju</h4>
+                        <form onSubmit={handleUpdateReview}>
+                            <div>
+                                <label htmlFor="ocjena">Ocjena:</label>
+                                <input id="ocjena"
+                                    type="number"
+                                    value={editedRating}
+                                    min={1} max={5}
+                                    onChange={(e) => setEditedRating(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="comment" id="komentar">Komentar:</label>
+                                <textarea id="comment"
+                                    value={editedComment}
+                                    onChange={(e) => setEditedComment(e.target.value)}
+                                    required
+                                />
+                            </div>
+                            <button type="submit">Spremi izmjene</button>
+                            <button type="button" onClick={() => setEditReview(null)}>Otkaži</button>
+                        </form>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
