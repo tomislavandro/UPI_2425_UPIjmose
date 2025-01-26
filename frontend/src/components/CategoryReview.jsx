@@ -12,7 +12,6 @@ const Reviews = () => {
             try {
                 const response = await fetch(`http://localhost:1000/reviews/by-category/${categoryId}`);
                 const data = await response.json();
-                console.log("zzzz", data)
                 if (data.success) {
                     setReviews(data.reviews);
                 } else {
