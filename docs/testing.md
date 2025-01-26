@@ -192,5 +192,191 @@ Opis testova:
 
 ## Frontend
 
+### 1. **Testovi za Signup**
+Testovi za funkcionalnost registracije korisnika.
+
+Datoteke:
+- `signup.test.jsx` - Testiranje renderiranja i funkcionalnosti signup forme.
+
+Opis testova:
+
+#### Test 1: Renderiranje signup forme
+- Cilj: Provjeriti ispravno renderiranje signup forme.
+##### Opis:
+ 1. Test provodi renderiranje signup forme.
+ 2. Provodi se provjera da li su svi potrebni elementi kao što su polja za unos imena, e-maila, lozinke i gumb za registraciju prisutni na stranici.
+##### Očekivani rezultat:
+ -Forma treba biti pravilno renderirana, s prisutnim svim potrebnim poljima i gumbom za registraciju.
+
+#### Test 2: Provjera funkcionalnosti registracije
+- Cilj: Provjeriti ispravno funkcioniranje signup forme.
+##### Opis:
+ 1. Test simulira unos podataka u formu (ime, e-mail, lozinka) i šalje formu.
+ 2. Provodi se provjera da li je funkcionalnost registracije uspješno obavljena.
+##### Očekivani rezultat:
+ -Nakon slanja forme, korisnik bi trebao biti uspješno registriran.
+
+### 2. **Testovi za Review List**
+Testovi za funkcionalnost prikaza recenzija.
+
+Datoteke:
+- `reviewlist.test.jsx` - Testiranje prikaza recenzija.
+
+Opis testova:
+
+#### Test 1: Renderiranje liste recenzija
+- Cilj: Provjeriti ispravno renderiranje liste recenzija.
+##### Opis:
+ 1. Test provodi renderiranje komponente ReviewList koja prikazuje recenzije.
+ 2. Provodi se provjera da li su recenzije pravilno prikazane na stranici.
+#####Očekivani rezultat:
+ -Svi podaci o recenzijama trebaju biti ispravno prikazani na stranici.
+
+### 3. **Testovi za Profile**
+Testovi za profil korisnika.
+
+Datoteke:
+- `profile.test.jsx` - Testiranje prikaza i funkcionalnosti korisničkog profila.
+
+Opis testova:
+
+#### Test 1: Renderiranje korisničkog profila
+- Cilj: Provjeriti ispravno renderiranje korisničkog profila.
+##### Opis:
+ 1. Test provodi renderiranje komponente Profile s korisničkim podacima.
+ 2. Provodi se provjera da li su svi podaci o korisniku ispravno prikazani.
+##### Očekivani rezultat:
+ -Podaci korisničkog profila trebaju biti ispravno prikazani.
+
+### 4. **Testovi za Navbar**
+Testovi za navigacijski bar.
+
+Datoteke:
+- `navbar.test.jsx` - Testiranje funkcionalnosti i renderiranja navigacijskog bara.
+
+Opis testova:
+
+#### Test 1: Renderiranje navbar-a
+- Cilj: Provjeriti ispravno renderiranje navbar-a.
+##### Opis:
+ 1. Test provodi renderiranje navbar-a.
+ 2. Provodi se provjera da li navbar sadrži sve potrebne navigacijske linkove.
+##### Očekivani rezultat:
+- Navbar treba biti ispravno renderiran s prisutnim svim potrebnim navigacijskim linkovima.
+
+### 5. **Testovi za Login**
+Testovi za funkcionalnost prijave korisnika.
+
+Datoteke:
+ - `login.test.jsx` - Testiranje login forme.
+
+Opis testova:
+
+#### Test 1: Renderiranje login forme
+ - Cilj: Provjeriti ispravno renderiranje login forme.
+##### Opis:
+ 1. Test provodi renderiranje login forme.
+ 2. Provodi se provjera da li su svi potrebni elementi kao što su polja za unos e-maila i lozinke prisutni na stranici.
+##### Očekivani rezultat:
+ - Forma treba biti pravilno renderirana s prisutnim svim potrebnim poljima.
+
+#### Test 2: Provjera funkcionalnosti prijave
+ - Cilj: Provjeriti ispravno funkcioniranje login forme.
+##### Opis:
+ 1. Test simulira unos podataka u formu (e-mail, lozinka) i šalje formu.
+ 2. Provodi se provjera da li je prijava uspješno obavljena.
+##### Očekivani rezultat:
+ - Nakon slanja forme, korisnik bi trebao biti uspješno prijavljen.
+
+### 6. **Testovi za Category Review**
+Testovi za prikazivanje recenzija po kategorijama.
+
+Datoteke:
+ - `categoryreview.test.jsx` - Testiranje kategorije i njezinih recenzija.
+
+Opis testova:
+
+#### Test 1: Renderiranje recenzija za kategoriju
+ - Cilj: Provjeriti ispravno renderiranje recenzija prema kategorijama.
+##### Opis:
+ 1. Test provodi renderiranje recenzija za određenu kategoriju.
+ 2. Provodi se provjera da li su recenzije ispravno prikazane za odabranu kategoriju.
+##### Očekivani rezultat:
+ - Recenzije za kategoriju trebaju biti ispravno prikazane.
+
+### 7. **Testovi za Categories**
+Testovi za kategorije.
+
+Datoteke:
+ - `categories.test.jsx` - Testiranje prikaza kategorija.
+
+Opis testova:
+
+#### Test 1: Prikazivanje kategorija nakon dohvaćanja podataka
+ - Cilj: Provjeriti ispravan prikaz kategorija nakon dohvaćanja podataka.
+##### Opis:
+ 1. Test šalje zahtjev za dohvaćanje kategorija.
+ 2. Provodi se provjera da li se kategorije pravilno prikazuju na stranici nakon dohvaćanja podataka.
+##### Očekivani rezultat:
+ - Kategorije trebaju biti prikazane nakon što se podaci uspješno dohvate.
+
+### 8. **Testovi za App**
+Testovi za glavni aplikacijski render.
+
+Opis testova:
+
+Datoteke:
+- `app.test.jsx` - Testiranje glavne aplikacije.
+#### Test 1: Renderiranje navbar-a i kategorija
+ - Cilj: Provjeriti renderiranje navbar-a i kategorija.
+##### Opis:
+ 1. Test provodi renderiranje aplikacije.
+ 2. Provodi se provjera da li su navbar i kategorije pravilno renderirani.
+##### Očekivani rezultat:
+ - Navbar i kategorije trebaju biti ispravno prikazani.
+
+### 9. **Testovi za Add Review**
+Testovi za dodavanje recenzija.
+
+Datoteke:
+ - `addreview.test.jsx` - Testiranje funkcionalnosti dodavanja recenzija.
+
+Opis testova:
+
+#### Test 1: Renderiranje forme za dodavanje recenzije
+ - Cilj: Provjeriti ispravno renderiranje forme za dodavanje recenzije.
+##### Opis:
+ 1. Test provodi renderiranje forme za dodavanje recenzije.
+ 2. Provodi se provjera da li su svi potrebni elementi forme prisutni, uključujući ocjenu, komentar, sliku i lokaciju.
+##### Očekivani rezultat:
+ - Forma za dodavanje recenzije treba biti ispravno renderirana.
+
+#### Test 2: Dodavanje recenzije s postojećom lokacijom
+ - Cilj: Provjeriti ispravno dodavanje recenzije s postojećom lokacijom.
+##### Opis:
+ 1. Test simulira unos podataka u formu za recenziju (ocjena, komentar, slika, lokacija).
+ 2. Provodi se provjera da li je recenzija uspješno dodana.
+##### Očekivani rezultat:
+ - Recenzija treba biti uspješno dodana s postojećom lokacijom.
+
+####Test 3: Dodavanje recenzije s novom lokacijom
+ - Cilj: Provjeriti ispravno dodavanje recenzije s novom lokacijom.
+##### Opis:
+ 1. Test simulira unos podataka u formu za recenziju i dodavanje nove lokacije.
+ 2. Provodi se provjera da li je nova lokacija uspješno dodana zajedno s recenzijom.
+##### Očekivani rezultat:
+ - Nova lokacija i recenzija trebaju biti uspješno dodani.
+
+#### Test 4: Upravlja greškama prilikom dodavanja recenzije
+ - Cilj: Provjeriti upravljanje greškama prilikom dodavanja recenzije.
+##### Opis:
+ 1. Test simulira grešku pri dodavanju recenzije.
+ 2. Provodi se provjera da li je greška ispravno prikazana korisniku.
+##### Očekivani rezultat:
+ - Treba biti prikazana poruka o grešci prilikom dodavanja recenzije.
+
+
+
+
 ## Testiranje cijele aplikacije
 
