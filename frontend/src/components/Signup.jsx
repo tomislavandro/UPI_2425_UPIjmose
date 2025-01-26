@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './styles/Register.css';
 
 const Register = () => {
     const [username, setUsername] = useState('');
@@ -41,8 +42,8 @@ const Register = () => {
             {success && <p className="success">{success}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Korisničko ime:</label>
-                    <input
+                    <label htmlFor="username">Korisničko ime:</label>
+                    <input id="username"
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
@@ -50,8 +51,8 @@ const Register = () => {
                     />
                 </div>
                 <div>
-                    <label>Email:</label>
-                    <input
+                    <label htmlFor="email">Email:</label>
+                    <input id="email"
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -59,8 +60,8 @@ const Register = () => {
                     />
                 </div>
                 <div>
-                    <label>Lozinka:</label>
-                    <input
+                    <label htmlFor="password">Lozinka:</label>
+                    <input id="password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
