@@ -192,5 +192,59 @@ Opis testova:
 
 ## Frontend
 
+Testovi za Signup Komponentu
+Ovi testovi provjeravaju funkcionalnost komponente Signup, koja je odgovorna za registraciju korisnika. Testovi osiguravaju ispravno prikazivanje forme, interakciju s formom, ispravno navigiranje te validaciju s uspješnim i neuspješnim odgovorima s backenda.
+
+Testna Skupina: Registracija
+Jedinični Testovi
+Test 1: Renderiranje Signup Komponente sa svim Inputima i Botunima
+Opis: Ovaj test osigurava da su svi elementi unutar forme za registraciju ispravno prikazani, uključujući inpute za korisničko ime, email i lozinku, kao i "Registriraj se" dugme te navigacijski link za postojeće korisnike za prijavu.
+
+Koraci:
+Renderiraj Register komponentu.
+Provjeri da je prikazan naslov forme "Registracija".
+Verificiraj da su prisutni labeli za Korisničko ime, Email i Lozinka.
+Provjeri da je prikazano dugme "Registriraj se".
+Verificiraj da je link za prijavu "Prijavite se" vidljiv i klikabilan.
+Test 2: Omogućuje korisniku da ispuni formu
+Opis: Testira mogućnost korisnika da ispuni formu za registraciju.
+
+Koraci:
+Renderiraj Register komponentu.
+Ispuni formu s podacima:
+Korisničko ime: testuser
+Email: testuser@example.com
+Lozinka: password123
+Provjeri da su uneseni podaci točno postavljeni u inpute.
+Test 3: Navigacija na stranicu za prijavu kada se klikne "Prijavite se"
+Opis: Provjerava navigaciju na stranicu za prijavu kada se klikne na link "Prijavite se".
+
+Koraci:
+Renderiraj Register komponentu.
+Klikni na link "Prijavite se".
+Provjeri je li URL promijenjen na /login.
+Integracijski Testovi
+Test 1: Slanje forme
+Opis: Testira slanje podataka sa forme i provjerava ispravno ponašanje pri uspješnom odgovoru od servera.
+
+Koraci:
+Simuliraj uspješan odgovor od servera sa statusom success i porukom "Registracija uspješna!".
+Renderiraj Register komponentu.
+Ispuni formu s podacima:
+Korisničko ime: testuser3
+Email: testuser3@example.com
+Lozinka: password123
+Klikni na dugme "Registriraj se".
+Provjeri da je pozvan fetch sa ispravnim metodama i tijelom zahtjeva.
+Nakon slanja forme, provjeri je li prikazana poruka "Registracija uspješna! Možete se prijaviti."
+Test 2: Prikazivanje greške kada se forma šalje sa praznim poljima
+Opis: Provjerava ponašanje kada se forma pošalje s praznim poljima, simulirajući grešku s backenda.
+
+Koraci:
+Simuliraj odgovor od servera s greškom zbog praznih polja.
+Renderiraj Register komponentu.
+Pokušaj poslati formu bez popunjavanja svih polja.
+Provjeri da fetch nije bio pozvan jer su polja prazna.
+
 ## Testiranje cijele aplikacije
 
