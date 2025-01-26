@@ -6,14 +6,10 @@ const Navbar = () => {
     return (
         <nav className="navbar">
             <div className="navbar-content">
-                <div className="navbar-left">
-                    <Link to="/" className="navbar-item">Početna stranica</Link>
-                    <Link to="/login" className="navbar-item">Prijava</Link>
-                    <Link to="/register" className="navbar-item">Registracija</Link>
-                </div>
+                <Link to="/" className="navbar-item">Početna stranica</Link>
                 <div className="navbar-right">
-                    
-                    <Link to="/profile" className="navbar-item profile-icon">👤</Link>
+                    <Link to="/login" className="navbar-item">Prijava</Link>
+                    <Link to="/profile" className="navbar-item">👤</Link>
                 </div>
             </div>
         </nav>
