@@ -390,7 +390,7 @@ Opis testova:
 #### Test 2: nav traka ima ispravnu CSS klasu
  - Cilj: Provjeriti da li je glavna navigacijska traka (<nav>) ispravno označena s odgovarajućom CSS klasom.
 ##### Opis:
- - Testira se da li <nav> element u navigacijskom baru ima klasu navbar, koja označava glavnu stiliziranu traku navigacije.
+ 1. Testira se da li <nav> element u navigacijskom baru ima klasu navbar, koja označava glavnu stiliziranu traku navigacije.
 ##### Očekivani rezultat:
  - nav element mora imati CSS klasu navbar, što omogućava stiliziranje navigacijske trake prema dizajnu aplikacije.
 
@@ -402,6 +402,8 @@ Datoteke:
 
 Opis testova:
 
+#### Unit testovi:
+
 #### Test 1: Renderiranje login forme
  - Cilj: Provjeriti ispravno renderiranje login forme.
 ##### Opis:
@@ -410,13 +412,37 @@ Opis testova:
 ##### Očekivani rezultat:
  - Forma treba biti pravilno renderirana s prisutnim svim potrebnim poljima.
 
-#### Test 2: Provjera funkcionalnosti prijave
- - Cilj: Provjeriti ispravno funkcioniranje login forme.
+#### Test 2: Provjera funkcionalnosti forme
+ - Cilj: Provjeriti da korisnik može unijeti podatke u formu.
 ##### Opis:
- 1. Test simulira unos podataka u formu (e-mail, lozinka) i šalje formu.
- 2. Provodi se provjera da li je prijava uspješno obavljena.
+ 1. Test simulira unos podataka u formu (e-mail, lozinka) i provjerava da li su podaci ispravno postavljeni.
 ##### Očekivani rezultat:
- - Nakon slanja forme, korisnik bi trebao biti uspješno prijavljen.
+ - Podaci trebaju biti ispravno uneseni u odgovarajuća polja forme.
+
+#### Test 3: Provjera prijave sa praznim poljima
+ - Cilj: Provjeriti funkcionalnost prijave kada se forma pošalje s praznim poljima.
+##### Opis:
+ 1. Test simulira slanje forme s praznim poljima i provodi provjeru odgovora s greškom.
+##### Očekivani rezultat:
+ - Greška se prikazuje ako su polja prazna.
+
+#### Test 4: Navigacija na registracijsku stranicu
+ - Cilj: Provjeriti navigaciju prema registracijskoj stranici.
+##### Opis:
+ 1. Test provodi klik na "Registrirajte se" link i provjerava da li se korisnik preusmjerava na stranicu za registraciju.
+##### Očekivani rezultat:
+ - Link treba ispravno preusmjeriti na stranicu za registraciju.
+
+#### Integracijski testovi:
+
+#### Test 5: Slanje uspješne prijave
+ - Cilj: Provjeriti uspješnu prijavu korisnika.
+##### Opis:
+ 1. Test simulira unos podataka u formu (e-mail, lozinka) i slanje forme.
+ 2. Provodi se provjera uspješne prijave putem API poziva.
+##### Očekivani rezultat:
+ - Nakon uspješne prijave, korisnik bi trebao biti preusmjeren ili prikazati uspješnu poruku.
+
 
 ### 6. **Testovi za Category Review**
 Testovi za prikazivanje recenzija po kategorijama.
@@ -426,6 +452,8 @@ Datoteke:
 
 Opis testova:
 
+#### Unit testovi:
+
 #### Test 1: Renderiranje recenzija za kategoriju
  - Cilj: Provjeriti ispravno renderiranje recenzija prema kategorijama.
 ##### Opis:
@@ -433,6 +461,50 @@ Opis testova:
  2. Provodi se provjera da li su recenzije ispravno prikazane za odabranu kategoriju.
 ##### Očekivani rezultat:
  - Recenzije za kategoriju trebaju biti ispravno prikazane.
+
+#### Integracijski testovi:
+
+#### Test 1: Dodavanje nove recenzije
+ - Cilj: Provjeriti uspješno dodavanje nove recenzije kroz formu.
+##### Opis:
+ 1. Test omogućuje korisniku da ispuni formu za dodavanje recenzije, uključujući odabir ocjene, komentara, slike i lokacije.
+ 2. Provodi se provjera da li je recenzija uspješno dodana i prikazana na stranici.
+##### Očekivani rezultat:
+ - Nova recenzija trebala bi biti prikazana na stranici nakon što je forma uspješno poslana.
+
+#### Funkcionalni testovi:
+
+#### Test 1: Prikazivanje greške prilikom slanja forme bez lokacije
+ - Cilj: Provjeriti ispravno ponašanje aplikacije u slučaju kada korisnik nije odabrao lokaciju prilikom slanja forme.
+##### Opis:
+ 1. Test simulira situaciju u kojoj korisnik ispunjava formu za recenziju, ali ne odabire lokaciju.
+ 2. Provodi se provjera da li se pojavljuje poruka o grešci koja obavještava korisnika da je lokacija obavezna.
+##### Očekivani rezultat:
+ - Trebala bi se prikazati poruka s greškom koja korisniku govori da je potrebno odabrati lokaciju.
+
+#### Test 2: Prikazivanje poruke kada nema recenzija
+ - Cilj: Provjeriti ispravno ponašanje kada za određenu kategoriju ne postoji niti jedna recenzija.
+##### Opis:
+ 1. Test provodi provjeru da li se u slučaju kada nema recenzija za kategoriju, prikazuje odgovarajuća poruka.
+ 2. Provodi se provjera da li aplikacija ispravno prikazuje informaciju o tome da nema recenzija.
+##### Očekivani rezultat:
+ - Aplikacija bi trebala prikazati poruku poput "Nema recenzija za ovu kategoriju".
+
+#### Test 3: Prikazivanje recenzije nakon dodavanja svih obaveznih opcija
+ - Cilj: Provjeriti da li se recenzija uspješno dodaje i prikazuje nakon što su svi obavezni podaci ispunjeni.
+##### Opis:
+ 1. Test simulira uspješno ispunjenu formu u kojoj su svi obavezni podaci uključeni (ocjena, komentar, slika, lokacija).
+ 2. Provodi se provjera da li se nova recenzija uspješno prikazuje na stranici.
+##### Očekivani rezultat:
+ - Recenzija treba biti prikazana s ispravnim podacima nakon uspješnog slanja forme.
+
+#### Test 4: Renderiranje forme za dodavanje recenzije
+ - Cilj: Provjeriti ispravno renderiranje forme za dodavanje nove recenzije.
+##### Opis:
+ 1. Test provodi renderiranje stranice s formom za dodavanje recenzije.
+ 2. Provodi se provjera da li je forma pravilno prikazana, uključujući potrebne elemente poput input polja i gumba za slanje.
+##### Očekivani rezultat:
+ - Forma za dodavanje recenzije treba biti ispravno renderirana, uključujući sve potrebne elemente za unos podataka.
 
 ### 7. **Testovi za Categories**
 Testovi za kategorije.
@@ -442,6 +514,18 @@ Datoteke:
 
 Opis testova:
 
+#### Unit testovi:
+
+#### Test 1: Renderiranje bez pogrešaka
+ - Cilj: Provjeriti ispravno renderiranje komponente bez pogrešaka.
+##### Opis:
+ 1. Test provodi renderiranje početne stranice.
+ 2. Provodi se provjera da li je naziv "Kategorije" prisutan na stranici.
+##### Očekivani rezultat:
+ - Tekst "Kategorije" treba biti prikazan na stranici, što znači da je komponenta uspješno renderirana.
+
+#### Funkcionalni testovi:
+
 #### Test 1: Prikazivanje kategorija nakon dohvaćanja podataka
  - Cilj: Provjeriti ispravan prikaz kategorija nakon dohvaćanja podataka.
 ##### Opis:
@@ -450,13 +534,26 @@ Opis testova:
 ##### Očekivani rezultat:
  - Kategorije trebaju biti prikazane nakon što se podaci uspješno dohvate.
 
+#### Integracijski testovi:
+
+#### Test 1: Navigacija na stranicu recenzija nakon klika na kategoriju
+ - Cilj: Provjeriti ispravan preusmjeravanje na stranicu recenzija kada se klikne na kategoriju.
+##### Opis:
+ 1. Test šalje zahtjev za dohvaćanje kategorija.
+ 2. Provodi se provjera da li klik na gumb kategorije preusmjerava korisnika na stranicu recenzija.
+##### Očekivani rezultat:
+ - Nakon klika na gumb kategorije, korisnik treba biti preusmjeren na stranicu recenzija, gdje će vidjeti tekst "Pregled recenzija".
+
 ### 8. **Testovi za App**
 Testovi za glavni aplikacijski render.
 
-Opis testova:
-
 Datoteke:
 - `app.test.jsx` - Testiranje glavne aplikacije.
+
+Opis testova:
+
+#### Funkcionalni testovi:
+
 #### Test 1: Renderiranje navbar-a i kategorija
  - Cilj: Provjeriti renderiranje navbar-a i kategorija.
 ##### Opis:
@@ -464,6 +561,30 @@ Datoteke:
  2. Provodi se provjera da li su navbar i kategorije pravilno renderirani.
 ##### Očekivani rezultat:
  - Navbar i kategorije trebaju biti ispravno prikazani.
+
+#### Test 2: Renderiranje login stranice
+ - Cilj: Provjeriti da se ispravno prikazuje stranica za prijavu kada se klikne na link.
+##### Opis:
+ 1. Test provodi klik na link za prijavu.
+ 2. Provodi se provjera da li se prikazuje stranica za prijavu.
+##### Očekivani rezultat:
+ - Stranica za prijavu treba biti ispravno prikazana.
+
+#### Test 3: Renderiranje registracijske stranice
+ - Cilj: Provjeriti da se ispravno prikazuje stranica za registraciju kada se klikne na link.
+##### Opis:
+ 1. Test provodi klik na link za registraciju.
+ 2. Provodi se provjera da li se prikazuje stranica za registraciju.
+##### Očekivani rezultat:
+ - Stranica za registraciju treba biti ispravno prikazana.
+
+#### Test 4: Renderiranje korisničkog profila
+ - Cilj: Provjeriti ispravan prikaz korisničkog profila nakon prijave.
+##### Opis:
+ 1. Test simulira kolačić za prijavljenog korisnika.
+ 2. Provodi se provjera da li je korisnički profil ispravno prikazan.
+##### Očekivani rezultat:
+ - Korisnički profil treba biti ispravno prikazan nakon što je korisnik prijavljen.
 
 ### 9. **Testovi za Add Review**
 Testovi za dodavanje recenzija.
@@ -473,6 +594,8 @@ Datoteke:
 
 Opis testova:
 
+#### Funkcionalni testovi:
+
 #### Test 1: Renderiranje forme za dodavanje recenzije
  - Cilj: Provjeriti ispravno renderiranje forme za dodavanje recenzije.
 ##### Opis:
@@ -481,7 +604,9 @@ Opis testova:
 ##### Očekivani rezultat:
  - Forma za dodavanje recenzije treba biti ispravno renderirana.
 
-#### Test 2: Dodavanje recenzije s postojećom lokacijom
+#### Integracijski testovi:
+
+#### Test 1: Dodavanje recenzije s postojećom lokacijom
  - Cilj: Provjeriti ispravno dodavanje recenzije s postojećom lokacijom.
 ##### Opis:
  1. Test simulira unos podataka u formu za recenziju (ocjena, komentar, slika, lokacija).
@@ -489,7 +614,7 @@ Opis testova:
 ##### Očekivani rezultat:
  - Recenzija treba biti uspješno dodana s postojećom lokacijom.
 
-####Test 3: Dodavanje recenzije s novom lokacijom
+####Test 2: Dodavanje recenzije s novom lokacijom
  - Cilj: Provjeriti ispravno dodavanje recenzije s novom lokacijom.
 ##### Opis:
  1. Test simulira unos podataka u formu za recenziju i dodavanje nove lokacije.
@@ -497,7 +622,9 @@ Opis testova:
 ##### Očekivani rezultat:
  - Nova lokacija i recenzija trebaju biti uspješno dodani.
 
-#### Test 4: Upravlja greškama prilikom dodavanja recenzije
+#### Testovi upravljanja greškama
+
+#### Test 1: Upravlja greškama prilikom dodavanja recenzije
  - Cilj: Provjeriti upravljanje greškama prilikom dodavanja recenzije.
 ##### Opis:
  1. Test simulira grešku pri dodavanju recenzije.
