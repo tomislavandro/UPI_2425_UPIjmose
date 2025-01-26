@@ -1,341 +1,3 @@
-// // import React, { useEffect, useState } from 'react';
-// // import Cookies from "js-cookie";
-// // import './styles/Profile.css';
-
-// // const Profile = () => {
-// //     const [userData, setUserData] = useState({
-// //         username: '',
-// //         email: '',
-// //         password: '',
-// //     });
-// //     const [reviews, setReviews] = useState([]); // Inicijaliziraj kao prazan niz
-// //     const [error, setError] = useState('');
-
-// //     const getCookie = (name) => {
-// //         return Cookies.get(name); // Funkcija za dohvatanje kolačića
-// //     };
-
-// //     useEffect(() => {
-// //         const fetchUserData = async () => {
-// //             const response = await fetch('http://localhost:1000/users/profile', {
-// //                 method: 'GET',
-// //                 headers: {
-// //                     'Content-Type': 'application/json'
-// //                 },
-// //                 credentials: "include"
-// //             });
-
-// //             const data = await response.json();
-// //             console.log(data); // Provjeri što vraća API
-
-// //             if (data.success) {
-// //                 setUserData({
-// //                     username: data.user.username,
-// //                     email: data.user.email,
-// //                     password: '', // Ne prikazuj lozinku
-// //                 });
-// //                 setReviews(data.user.reviews || []); // Osiguraj se da je reviews prazan niz ako nije definiran
-// //             } else {
-// //                 setError(data.message);
-// //             }
-// //         };
-
-// //         fetchUserData();
-// //     }, []);
-
-// //     const handleSubmit = async (e) => {
-// //         e.preventDefault();
-// //         try {
-// //             const response = await fetch('http://localhost:1000/users/update', {
-// //                 method: 'PUT',
-// //                 headers: {
-// //                     'Content-Type': 'application/json',
-// //                 },
-// //                 body: JSON.stringify(userData),
-// //                 credentials: "include"
-// //             });
-
-// //             const data = await response.json();
-// //             if (data.success) {
-// //                 alert('Podaci su uspješno ažurirani');
-// //                 setUserData({ ...userData, password: '' }); // Resetiraj lozinku
-// //             } else {
-// //                 setError(data.message);
-// //             }
-// //         } catch (error) {
-// //             console.error('Greška prilikom ažuriranja:', error);
-// //             setError('Došlo je do greške prilikom ažuriranja.');
-// //         }
-// //     };
-
-// //     const handleDeleteReview = async (reviewId) => {
-// //         try {
-// //             const response = await fetch(`http://localhost:1000/reviews/${reviewId}`, {
-// //                 method: 'DELETE',
-// //                 credentials: "include" // Dodano za kolačiće
-// //             });
-
-// //             const data = await response.json();
-// //             if (data.success) {
-// //                 setReviews(reviews.filter((review) => review._id !== reviewId)); // Ukloni recenziju iz stanja
-// //             } else {
-// //                 setError(data.message);
-// //             }
-// //         } catch (error) {
-// //             console.error('Greška prilikom brisanja recenzije:', error);
-// //             setError('Došlo je do greške prilikom brisanja recenzije.');
-// //         }
-// //     };
-
-// //     const handleLogout = async () => {
-// //         try {
-// //             const response = await fetch('http://localhost:1000/users/logout', {
-// //                 method: 'POST',
-// //                 credentials: "include"
-// //             });
-
-// //             const data = await response.json();
-// //             if (data.success) {
-// //                 Cookies.remove('user'); // Ukloni kolačić
-// //                 alert('Uspješno ste se odjavili');
-// //                 window.location.href = '/login'; // Ako koristiš react-router, zamijeni sa history.push('/login')
-// //             } else {
-// //                 setError(data.message);
-// //             }
-// //         } catch (error) {
-// //             console.error('Greška prilikom odjave:', error);
-// //             setError('Došlo je do greške prilikom odjave.');
-// //         }
-// //     };
-
-// //     return (
-// //         <div className="profile-container">
-// //             <h2>Profil</h2>
-// //             {error && <p className="error">{error}</p>}
-// //             <form onSubmit={handleSubmit}>
-// //                 <div>
-// //                     <label>Korisničko ime:</label>
-// //                     <input
-// //                         type="text"
-// //                         value={userData.username}
-// //                         onChange={(e) => setUserData({ ...userData, username: e.target.value })}
-// //                         required
-// //                     />
-// //                 </div>
-// //                 <div>
-// //                     <label>Email:</label>
-// //                     <input
-// //                         type="email"
-// //                         value={userData.email}
-// //                         onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-// //                         required
-// //                     />
-// //                 </div>
-// //                 <div>
-// //                     <label>Lozinka:</label>
-// //                     <input
-// //                         type="password"
-// //                         value={userData.password}
-// //                         onChange={(e) => setUserData({ ...userData, password: e.target.value })}
-// //                     />
-// //                 </div>
-// //                 <button type="submit">Ažuriraj</button>
-// //             </form>
-// //             <button onClick={handleLogout} className="logout-button">Odjavi se</button>
-// //             <h3>Moje recenzije</h3>
-// //             {reviews && reviews.length > 0 ? (
-// //                 reviews.map((review) => (
-// //                     <div key={review._id}>
-// //                         <h4>{review.location_id ? review.location_id.name : 'Nepoznato mjesto'}</h4>
-// //                         <p>Ocjena: {review.rating}</p>
-// //                         <p>{review.comment ? review.comment : 'bez komentara'}</p>
-// //                         <button onClick={() => handleDeleteReview(review._id)}>Obriši</button>
-// //                     </div>
-// //                 ))
-// //             ) : (
-// //                 <p>Nema recenzija za prikaz.</p>
-// //             )}
-
-// //         </div>
-// //     );
-// // };
-
-// // export default Profile;
-
-
-// import React, { useEffect, useState } from 'react';
-// import Cookies from "js-cookie";
-// import './styles/Profile.css';
-
-// const Profile = () => {
-//     const [userData, setUserData] = useState({
-//         username: '',
-//         email: '',
-//         password: '',
-//     });
-//     const [reviews, setReviews] = useState([]);
-//     const [error, setError] = useState('');
-
-//     const getCookie = (name) => Cookies.get(name);
-
-//     useEffect(() => {
-//         const fetchUserData = async () => {
-//             const response = await fetch('http://localhost:1000/users/profile', {
-//                 method: 'GET',
-//                 headers: {
-//                     'Content-Type': 'application/json'
-//                 },
-//                 credentials: "include"
-//             });
-
-//             const data = await response.json();
-//             console.log(data);
-
-//             if (data.success) {
-//                 setUserData({
-//                     username: data.user.username,
-//                     email: data.user.email,
-//                     password: '',
-//                 });
-//                 setReviews(data.user.reviews || []);
-//             } else {
-//                 setError(data.message);
-//             }
-//         };
-
-//         fetchUserData();
-//     }, []);
-
-//     const handleSubmit = async (e) => {
-//         e.preventDefault();
-//         try {
-//             const response = await fetch('http://localhost:1000/users/update', {
-//                 method: 'PUT',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                 },
-//                 body: JSON.stringify(userData),
-//                 credentials: "include"
-//             });
-
-//             const data = await response.json();
-//             if (data.success) {
-//                 alert('Podaci su uspješno ažurirani');
-//                 setUserData({ ...userData, password: '' });
-//             } else {
-//                 setError(data.message);
-//             }
-//         } catch (error) {
-//             console.error('Greška prilikom ažuriranja:', error);
-//             setError('Došlo je do greške prilikom ažuriranja.');
-//         }
-//     };
-
-//     const handleDeleteReview = async (reviewId) => {
-//         try {
-//             const response = await fetch(`http://localhost:1000/reviews/${reviewId}`, {
-//                 method: 'DELETE',
-//                 credentials: "include"
-//             });
-
-//             const data = await response.json();
-//             if (data.success) {
-//                 setReviews(reviews.filter((review) => review._id !== reviewId));
-//             } else {
-//                 setError(data.message);
-//             }
-//         } catch (error) {
-//             console.error('Greška prilikom brisanja recenzije:', error);
-//             setError('Došlo je do greške prilikom brisanja recenzije.');
-//         }
-//     };
-
-//     const handleEditReview = (reviewId) => {
-//         // Logika za uređivanje recenzije
-//         console.log(`Uređivanje recenzije s ID: ${reviewId}`);
-//     };
-
-//     const handleLogout = async () => {
-//         try {
-//             const response = await fetch('http://localhost:1000/users/logout', {
-//                 method: 'POST',
-//                 credentials: "include"
-//             });
-
-//             const data = await response.json();
-//             if (data.success) {
-//                 Cookies.remove('user');
-//                 alert('Uspješno ste se odjavili');
-//                 window.location.href = '/login';
-//             } else {
-//                 setError(data.message);
-//             }
-//         } catch (error) {
-//             console.error('Greška prilikom odjave:', error);
-//             setError('Došlo je do greške prilikom odjave.');
-//         }
-//     };
-
-//     return (
-//         <div className="profile-container">
-//             <h2>Profil</h2>
-//             {error && <p className="error">{error}</p>}
-//             <form onSubmit={handleSubmit}>
-//                 <div>
-//                     <label>Korisničko ime:</label>
-//                     <input
-//                         type="text"
-//                         value={userData.username}
-//                         onChange={(e) => setUserData({ ...userData, username: e.target.value })}
-//                         required
-//                     />
-//                 </div>
-//                 <div>
-//                     <label>Email:</label>
-//                     <input
-//                         type="email"
-//                         value={userData.email}
-//                         onChange={(e) => setUserData({ ...userData, email: e.target.value })}
-//                         required
-//                     />
-//                 </div>
-//                 <div>
-//                     <label>Lozinka:</label>
-//                     <input
-//                         type="password"
-//                         value={userData.password}
-//                         onChange={(e) => setUserData({ ...userData, password: e.target.value })}
-//                     />
-//                 </div>
-//                 <button type="submit">Ažuriraj</button>
-//             </form>
-//             <button onClick={handleLogout} className="logout-button">Odjavi se</button>
-//             <h3>Moje recenzije</h3>
-//             {reviews && reviews.length > 0 ? (
-//                 reviews.map((review) => (
-//                     <div key={review._id} className="review-card">
-//                         <h4>{review.location_id ? review.location_id.name : 'Nepoznato mjesto'}</h4>
-//                         <p><strong>Ocjena:</strong> {review.rating}</p>
-//                         <p>{review.comment ? review.comment : 'bez komentara'}</p>
-//                         <div className="review-buttons">
-//                             <button onClick={() => handleEditReview(review._id)} className="edit-button">
-//                                 Uredi
-//                             </button>
-//                             <button onClick={() => handleDeleteReview(review._id)} className="delete-button">
-//                                 Obriši
-//                             </button>
-//                         </div>
-//                     </div>
-//                 ))
-//             ) : (
-//                 <p>Nema recenzija za prikaz.</p>
-//             )}
-//         </div>
-//     );
-// };
-
-// export default Profile;
-
 import React, { useEffect, useState } from 'react';
 import Cookies from "js-cookie";
 import './styles/Profile.css';
@@ -491,8 +153,8 @@ const Profile = () => {
             {error && <p className="error">{error}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Korisničko ime:</label>
-                    <input
+                    <label htmlFor = "username">Korisničko ime:</label>
+                    <input id = "username"
                         type="text"
                         value={userData.username}
                         onChange={(e) => setUserData({ ...userData, username: e.target.value })}
@@ -500,8 +162,8 @@ const Profile = () => {
                     />
                 </div>
                 <div>
-                    <label>Email:</label>
-                    <input
+                    <label htmlFor = "email">Email:</label>
+                    <input id = "email"
                         type="email"
                         value={userData.email}
                         onChange={(e) => setUserData({ ...userData, email: e.target.value })}
@@ -509,8 +171,8 @@ const Profile = () => {
                     />
                 </div>
                 <div>
-                    <label>Lozinka:</label>
-                    <input
+                    <label htmlFor = "password">Lozinka:</label>
+                    <input id = "password"
                         type="password"
                         value={userData.password}
                         onChange={(e) => setUserData({ ...userData, password: e.target.value })}
@@ -545,8 +207,8 @@ const Profile = () => {
                     <h4>Uredi recenziju</h4>
                     <form onSubmit={handleUpdateReview}>
                         <div>
-                            <label>Ocjena:</label>
-                            <input
+                            <label htmlFor="ocjena">Ocjena:</label>
+                            <input id = "ocjena"
                                 type="number"
                                 value={editedRating}
                                 min={1} max={5}
@@ -555,8 +217,8 @@ const Profile = () => {
                             />
                         </div>
                         <div>
-                            <label>Komentar:</label>
-                            <textarea
+                            <label htmlFor = "comment" id = "komentar">Komentar:</label>
+                            <textarea id = "comment"
                                 value={editedComment}
                                 onChange={(e) => setEditedComment(e.target.value)}
                                 required
