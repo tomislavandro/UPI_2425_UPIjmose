@@ -633,6 +633,152 @@ Opis testova:
  - Treba biti prikazana poruka o grešci prilikom dodavanja recenzije.
 
 
-
-
 ## Testiranje cijele aplikacije
+
+### 1: **Testovi za prijavu korisnika**
+Testovi za provjeru funkcionalnosti prijave korisnika na aplikaciju.
+
+Datoteke:
+ - `tests/frontend/login.cy.jsx` - Testiranje funkcionalnosti prijave.
+
+Opis testova:
+
+#### Test 1: Uspješna prijava s točnim korisničkim podacima
+ - Cilj: Provjeriti ispravnost prijave korisnika s točnim podacima.
+##### Opis:
+1. Prije svakog testa, aplikacija se otvara na login stranici korištenjem cy.visit('http://localhost:5173/login');.
+2. Test unosi sljedeće podatke u polja:
+- Korisničko ime: "testuser22"
+- Email: "testuser22@example.com"
+- Lozinka: "password123"
+3. Klikom na gumb za prijavu (button[type="submit"]), simulira se slanje podataka.
+4. Provjerava se preusmjerava li aplikacija korisnika na stranicu profila (provjera URL-a koji treba sadržavati /profile).
+##### Očekivani rezultat:
+-Korisnik se uspješno prijavljuje.
+- URL sadrži /profile.
+
+
+#### Test 2: Prikaz greške s netočnim korisničkim podacima
+ - Cilj: Provjeriti odgovarajuću validaciju i poruku greške kada se unesu netočni podaci.
+##### Opis:
+1. Prije svakog testa, aplikacija se otvara na login stranici korištenjem cy.visit('http://localhost:5173/login');.
+2. Test unosi sljedeće netočne podatke u polja:
+- Korisničko ime: "wronguser"
+- Email: "wronguser@example.com"
+- Lozinka: "wrongpassword"
+3. Klikom na gumb za prijavu (button[type="submit"]), simulira se slanje podataka.
+  Provjerava se prikaz odgovarajuće poruke greške na stranici (element .error treba sadržavati "Invalid email or password").
+##### Očekivani rezultat:
+- Prikazuje se poruka greške: "Invalid email or password".
+- Korisnik ostaje na login stranici.
+
+
+### 2: **Testovi za profil korisnika**
+Testovi za provjeru funkcionalnosti stranice profila korisnika.
+
+Datoteke:
+ - `tests/frontend/profile.cy.jsx` - Testiranje funkcionalnosti profila.
+
+Opis testova:
+
+#### Test 1: Učitaj profil s poljima za korisničko ime, email i lozinku
+ - Cilj: Provjeriti ispravnost učitavanja podataka na stranici profila.
+##### Opis:
+1. Prije svakog testa, korisnik se prijavljuje na aplikaciju.
+2. Provjerava se sadrže li polja sljedeće vrijednosti:
+- Korisničko ime: "testuser22"
+- Email: "testuser22@example.com"
+- Lozinka: prazno polje.
+##### Očekivani rezultat:
+- Polje za korisničko ime sadrži "testuser22".
+- Polje za email sadrži "testuser22@example.com".
+- Polje za lozinku je prazno.
+
+
+#### Test 2: Ažuriranje profila
+ - Cilj: Provjeriti funkcionalnost ažuriranja korisničkih podataka.
+##### Opis:
+1. Korisnik mijenja korisničko ime u "newusername" i email u "newemail@example.com".
+2. Klikom na gumb za spremanje, podaci se ažuriraju.
+3. Provjerava se je li ažuriranje uspješno.
+##### Očekivani rezultat:
+- Polje za korisničko ime sadrži "newusername".
+- Polje za email sadrži "newemail@example.com".
+
+#### Test 3: Prikaz greške pri neuspjelom ažuriranju podataka
+ - Cilj: Provjeriti prikaz poruke greške kada unos nije ispravan.
+##### Opis:
+1. Korisnik unosi neispravan email ("invalidemail.com").
+2. Klikom na gumb za spremanje, podaci se šalju.
+3. Provjerava se prikaz poruke greške (element .error).
+##### Očekivani rezultat:
+- Prikazuje se poruka greške: "Email not in correct format".
+- Korisnik ostaje na stranici profila.
+
+#### Test 4: Brisanje recenzije
+ - Cilj: Provjeriti funkcionalnost brisanja recenzija na profilu.
+##### Opis:
+1. Korisnik posjećuje stranicu za recenzije i dodaje novu recenziju.
+2. Povratkom na profil, provjerava se je li recenzija prikazana.
+3. Korisnik klikne na gumb za brisanje zadnje recenzije.
+4. Provjerava se da recenzija više nije prisutna na profilu.
+##### Očekivani rezultat:
+- Recenzija se uspješno briše.
+- Stranica profila ne sadrži obrisanu recenziju.
+
+#### Test 5: Uređivanje recenzije
+ - Cilj: Provjeriti funkcionalnost uređivanja recenzija.
+##### Opis:
+1. Korisnik posjećuje stranicu za recenzije i dodaje novu recenziju.
+2. Povratkom na profil, provjerava se je li recenzija prikazana.
+3. Korisnik klikne na gumb za uređivanje recenzije i unosi sljedeće izmjene:
+- Ocjena: "4"
+- Komentar: "Not bad!"
+4. Klikom na gumb za spremanje izmjena, provjerava se je li recenzija ažurirana.
+##### Očekivani rezultat:
+- Recenzija prikazuje izmijenjene podatke: "Not bad!" i "4".
+
+#### Test 6: Odjava korisnika
+ - Cilj: Provjeriti funkcionalnost odjave korisnika.
+##### Opis:
+1. Korisnik klikne na gumb za odjavu.
+2. Provjerava se je li korisnik preusmjeren na login stranicu.
+##### Očekivani rezultat:
+- Korisnik je preusmjeren na login stranicu (http://localhost:5173/login).
+
+
+### 3: **Testovi za registraciju korisnika**
+Testovi za provjeru funkcionalnosti registracije korisnika.
+
+Datoteke:
+ - `tests/frontend/signup.cy.jsx` - Testiranje funkcionalnosti registracije korisnika.
+
+Opis testova:
+
+#### Test 1: Uspješna registracija novog korisnika
+ - Cilj:  Provjeriti ispravnost registracije s točnim podacima.
+##### Opis:
+1. Prije svakog testa, aplikacija se otvara na stranici za registraciju korištenjem cy.visit('http://localhost:5173/register');.
+2. Test unosi sljedeće podatke u polja:
+- Korisničko ime: "newuser"
+- Email: "newuser@example.com"
+- Lozinka: "password123"
+3. Klikom na gumb za registraciju (button[type="submit"]), simulira se slanje podataka.
+4. Provjerava se prikaz uspješne poruke (element .success treba sadržavati "Registracija uspješna! Možete se prijaviti.").
+##### Očekivani rezultat:
+- Korisnik se uspješno registrira.
+- Prikazuje se poruka: "Registracija uspješna! Možete se prijaviti.".
+
+#### Test 2: Prikaz greške za postojeće korisničko ime ili email
+ - Cilj: Provjeriti validaciju i prikaz greške pri unosu postojećih podataka.
+##### Opis:
+1. Prije svakog testa, aplikacija se otvara na stranici za registraciju korištenjem cy.visit('http://localhost:5173/register');.
+2. Test unosi sljedeće podatke u polja:
+- Korisničko ime: "testuser22"
+- Email: "testuser22@example.com"
+- Lozinka: "password123"
+3. Klikom na gumb za registraciju (button[type="submit"]), simulira se slanje podataka.
+4. Provjerava se prikaz poruke greške (element .error treba sadržavati "Email already exists!").
+##### Očekivani rezultat:
+- Prikazuje se poruka greške: "Email already exists!".
+- Korisnik ostaje na stranici za registraciju.
