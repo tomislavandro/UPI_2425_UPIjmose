@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import za preusmjeravanje
+import './styles/Login.css';
 import Cookies from "js-cookie";
 
 const Login = () => {
@@ -6,6 +8,19 @@ const Login = () => {
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
+    const [successMessage, setSuccessMessage] = useState(''); // Dodano stanje za uspjeh
+    const navigate = useNavigate(); // Hook za navigaciju
+
+
+    // Provjera je li korisnik već prijavljen
+    useEffect(() => {
+        const userCookie = Cookies.get('user');
+        if (userCookie) {
+            navigate('/profile'); // Preusmjeravanje na profil ako je korisnik već prijavljen
+        }
+    }, [navigate]);
+
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,12 +38,17 @@ const Login = () => {
 
             if (data.success) {
                 Cookies.set('user', JSON.stringify(data.data), { expires: 7 }); // Kolačić će isteći za 7 dana
-                console.log('Prijava uspješna:', data);
+                setSuccessMessage('Login success!'); // Postavljanje uspješne poruke
+                setError(''); // Resetiranje eventualnih grešaka
+                console.log('Login success!', data);
+                navigate('/profile'); // Preusmjeravanje nakon uspješne prijave
             } else {
+                setSuccessMessage(''); // Resetiranje poruke o uspjehu ako prijava nije uspješna
                 setError(data.message);
             }
         } catch (error) {
             setError('Došlo je do greške prilikom prijave.');
+            setSuccessMessage('');
         }
     };
 
@@ -36,10 +56,11 @@ const Login = () => {
         <div className="login-container">
             <h2>Prijava</h2>
             {error && <p className="error">{error}</p>}
+            {successMessage && <p className="success">{successMessage}</p>}
             <form onSubmit={handleSubmit}>
                 <div>
-                    <label>Korisničko ime:</label>
-                    <input
+                    <label htmlFor="username">Korisničko ime:</label>
+                    <input id="username"
                         type="text"
                         value={username}
                         onChange={(e) => setUsername(e.target.value)}
@@ -47,8 +68,8 @@ const Login = () => {
                     />
                 </div>
                 <div>
-                    <label>Email:</label>
-                    <input
+                    <label htmlFor="email">Email:</label>
+                    <input id="email"
                         type="email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -56,8 +77,8 @@ const Login = () => {
                     />
                 </div>
                 <div>
-                    <label>Lozinka:</label>
-                    <input
+                    <label htmlFor="password">Lozinka:</label>
+                    <input id="password"
                         type="password"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
