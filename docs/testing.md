@@ -253,15 +253,27 @@ Datoteke:
 
 Opis testova:
 
+#### Unit testovi:
+
 #### Test 1: Renderiranje liste recenzija
-- Cilj: Provjeriti ispravno renderiranje liste recenzija.
+ - Cilj: Provjeriti ispravno renderiranje liste recenzija.
 ##### Opis:
  1. Test provodi renderiranje komponente ReviewList koja prikazuje recenzije.
  2. Provodi se provjera da li su recenzije pravilno prikazane na stranici.
 #####Očekivani rezultat:
  -Svi podaci o recenzijama trebaju biti ispravno prikazani na stranici.
 
-#### Test 2: Funkcionalnost - Broj recenzija
+#### Test 2: Renderiranje recenzija za specifičnu kategoriju
+ - Cilj: Provjeriti ispravno renderiranje recenzija za određenu kategoriju.
+##### Opis: 
+ 1. Testira se renderiranje komponente ReviewList koja prikazuje recenzije specifične za kategoriju. 
+ 2. Provodi se provjera da li se ispravno prikazuju samo recenzije povezane s tom kategorijom.
+##### Očekivani rezultat: 
+ - Recenzije za određenu kategoriju trebaju biti ispravno renderirane, dok se recenzije iz drugih kategorija ne prikazuju.
+
+#### Funkcionalni testovi:
+
+#### Test 1: Funkcionalnost - Broj recenzija
  - Cilj: Provjeriti broj recenzija koje se renderiraju.
 ##### Opis:
  1. Test provodi renderiranje liste recenzija s tri recenzije. 
@@ -269,7 +281,7 @@ Opis testova:
 ##### Očekivani rezultat:
  - Trebalo bi se ispravno prikazati 3 recenzije, tj. broj review-item elemenata treba biti 3.
 
-#### Test 3: CSS klase
+#### Test 2: CSS klase
  - Cilj: Provjeriti jesu li CSS klase pravilno primijenjene.
 ##### Opis:
  1. Test provodi renderiranje liste recenzija.
@@ -286,13 +298,57 @@ Datoteke:
 
 Opis testova:
 
+#### Funkcionalni testovi:
+
 #### Test 1: Renderiranje korisničkog profila
-- Cilj: Provjeriti ispravno renderiranje korisničkog profila.
+ - Cilj: Provjeriti ispravno renderiranje korisničkog profila.
 ##### Opis:
  1. Test provodi renderiranje komponente Profile s korisničkim podacima.
  2. Provodi se provjera da li su svi podaci o korisniku ispravno prikazani.
 ##### Očekivani rezultat:
  -Podaci korisničkog profila trebaju biti ispravno prikazani.
+
+#### Test 2: Prikaz recenzija korisnika
+ - Cilj: Provjeriti ispravan prikaz recenzija korisnika.
+##### Opis:
+ 1. Testira se renderiranje komponente Profile s korisničkim podacima i recenzijama.
+ 2. Provodi se provjera da li su recenzije ispravno prikazane.
+##### Očekivani rezultat:
+ - Svi podaci o recenzijama korisnika, uključujući naziv lokacije, ocjenu i komentar, trebaju biti ispravno prikazani.
+
+#### Test 3: Brisanje recenzije
+ - Cilj: Provjeriti da li se recenzija briše kada korisnik pritisne odgovarajući gumb.
+##### Opis:
+ 1. Testira se brisanje recenzije nakon što korisnik pritisne gumb za brisanje.
+ 2. Provodi se provjera da li se recenzija uklonila s liste nakon brisanja.
+##### Očekivani rezultat:
+ - Recenzija bi trebala nestati s liste nakon brisanja.
+
+#### Test 4: Uređivanje recenzije
+ - Cilj: Provjeriti da li korisnik može urediti recenziju i ažurirati je.
+##### Opis:
+ 1. Testira se uređivanje postojeće recenzije (promjena komentara i ocjene).
+ 2. Provodi se provjera da li je uređeni komentar i ocjena pravilno ažurirana.
+##### Očekivani rezultat:
+ - Komentar i ocjena trebaju biti ažurirani prema korisnikovim izmjenama.
+
+#### Integracijski testovi:
+
+#### Test 1: Ažuriranje korisničkih podataka
+ - Cilj: Provjeriti da li se korisnički podaci mogu ažurirati putem forme.
+##### Opis:
+ 1. Testira se slanje forme za ažuriranje korisničkih podataka (username, email).
+ 2. Provodi se provjera da li je API poziv za ažuriranje korisničkih podataka ispravno pozvan.
+##### Očekivani rezultat:
+ - Podaci o korisniku trebaju biti uspješno ažurirani putem API poziva.
+
+#### Test 6: Odjava korisnika
+ - Cilj: Provjeriti ispravnu funkcionalnost odjave korisnika.
+##### Opis:
+ 1. Testira se odjava korisnika putem odgovarajućeg gumba.
+ 2. Provodi se provjera da li je API poziv za odjavu korisnika ispravno pozvan.
+##### Očekivani rezultat:
+ - Korisnik treba biti odjavljen i API poziv za odjavu treba biti ispravno izvršen.
 
 ### 4. **Testovi za Navbar**
 Testovi za navigacijski bar.
@@ -302,6 +358,8 @@ Datoteke:
 
 Opis testova:
 
+#### Funkcionalni testovi:
+
 #### Test 1: Renderiranje navbar-a
 - Cilj: Provjeriti ispravno renderiranje navbar-a.
 ##### Opis:
@@ -309,6 +367,30 @@ Opis testova:
  2. Provodi se provjera da li navbar sadrži sve potrebne navigacijske linkove.
 ##### Očekivani rezultat:
 - Navbar treba biti ispravno renderiran s prisutnim svim potrebnim navigacijskim linkovima.
+
+#### Test 2: Renderiranje navbar-right s ispravnom dijecom
+ - Cilj: Provjeriti da je komponenta navbar-right ispravno renderirana s potrebnim dijelom (linkovima za prijavu i korisnički profil).
+##### Opis:
+1. Testira se da li komponenta navbar-right u navigacijskom baru sadrži ispravne elemente, tj. linkove za prijavu i korisnički profil.
+##### Očekivani rezultat:
+ - Komponenta navbar-right treba biti prisutna i sadržavati linkove za Prijava i korisnički profil.
+ - Provjera da li roditeljski element (div) koji okružuje te linkove ima klasu navbar-right
+
+#### Unit testovi:
+
+#### Test 1: Linkovi imaju točne href atribute
+ - Cilj: Provjeriti da li linkovi u navigacijskom baru imaju točne href atribute koji vode na ispravne rute.
+##### Opis:
+ 1. Testira se da li su svi linkovi u navigacijskom baru postavljeni s ispravnim href atributima koji vode na odgovarajuće stranice
+##### Očekivani rezultat:
+ - Svaki link u navigacijskom baru treba imati ispravan href atribut koji odgovara ispravnoj ruti aplikacije.
+
+#### Test 2: nav traka ima ispravnu CSS klasu
+ - Cilj: Provjeriti da li je glavna navigacijska traka (<nav>) ispravno označena s odgovarajućom CSS klasom.
+##### Opis:
+ - Testira se da li <nav> element u navigacijskom baru ima klasu navbar, koja označava glavnu stiliziranu traku navigacije.
+##### Očekivani rezultat:
+ - nav element mora imati CSS klasu navbar, što omogućava stiliziranje navigacijske trake prema dizajnu aplikacije.
 
 ### 5. **Testovi za Login**
 Testovi za funkcionalnost prijave korisnika.
