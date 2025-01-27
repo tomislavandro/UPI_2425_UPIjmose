@@ -15,6 +15,10 @@ Ovo je web aplikacija za recenzije koja omogućuje korisnicima pregled i dodavan
   - Baza podataka: MongoDB
   - Autentifikacija: Kolačići za upravljanje sesijama
 
+## !Prije pokretanja aplikacije!
+- Prije nego što pokrenete aplikaciju, obavezno kopirajte .env datoteku u glavnu mapu projekta.
+- Ova datoteka sadrži važne API ključeve, bazu podataka i druge potrebne environment varijable koje omogućuju ispravan rad aplikacije.
+
 ## Kako pokrenuti aplikaciju?
 1. Kloniraj repozitorij -> `git clone https://github.com/tomislavandro/UPI_2425_UPIjmose.git`
 2. odi u mapu projekta u terminalu i pokreni naredbu: `npm install`
