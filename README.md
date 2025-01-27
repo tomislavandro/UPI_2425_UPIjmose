@@ -17,7 +17,7 @@ Ovo je web aplikacija za recenzije koja omogućuje korisnicima pregled i dodavan
 
 ## !Prije pokretanja aplikacije!
 - Postavke firewall-a: Ako koristite fakultetsku mrežu, može doći do problema s povezivanjem na MongoDB Atlas jer fakultetski firewall blokira pristup. Na normalnim Wi-Fi mrežama sve bi trebalo raditi ispravno. Preporuča se omogućiti pristup MongoDB Atlas-u putem vašeg mrežnih postavki ili koristiti osobnu Wi-Fi mrežu dok se aplikacija pokreće.
-- Prije nego što pokrenete aplikaciju, obavezno kopirajte .env datoteku u glavnu mapu projekta.
+- Prije nego što pokrenete aplikaciju, obavezno kopirajte `x.env` datoteku u glavnu mapu projekta i preimenujte ju u `.env`.
 - Ova datoteka sadrži važne API ključeve, bazu podataka i druge potrebne environment varijable koje omogućuju ispravan rad aplikacije.
 
 ## Kako pokrenuti aplikaciju?
