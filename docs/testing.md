@@ -1,14 +1,27 @@
 # Dokumentacija za testiranje aplikacije
 
-## Backend
+# Backend
+
+## 1. Opis backend aplikacije
+Backend aplikacija pruža API rute za upravljanje kategorijama, korisnicima, recenzijama i lokacijama. Korišteni su **Node.js** i **Express.js** za izradu servera i API-ja, dok se podaci pohranjuju u **MongoDB** bazu podataka, kojoj pristupamo pomoću **Mongoose**.
+
+## 2. Tehnologije i alati
+- **Node.js**: Za backend server.
+- **Express.js**: Za izradu API-ja i upravljanje HTTP zahtjevima.
+- **MongoDB**: Za pohranu podataka.
+- **Mongoose**: Za rad s MongoDB bazom podataka.
+- **Jest**: Za testiranje backend funkcionalnosti.
+
+## 3. Pokretanje testova
+ Za pokretanje testova u glavnoj mapi projekta koristite naredbu: `npm test`
+
+## 4. Opis testova:
 
 ### 1. **Testovi za kategorije**
 Testovi za API rute koje omogućuju pregled svih kategorija i stvaranje novih kategorija.
 
-Datoteke:
- - `tests/backend/categories/categories.test.js` - Testiranje rute za dohvat svih kategorija i stvaranje novih kategorija.
-
-Opis testova:
+Datoteka: `tests/category.test.js`
+ - Testiranje rute za dohvat svih kategorija i stvaranje novih kategorija.
 
 #### Test 1: Dohvati sve kategorije
 - Cilj: Provjeriti API rutu za dohvat svih kategorija.
@@ -35,10 +48,8 @@ Opis testova:
 ### 2. **Testovi za lokacije**
 Testovi za API rute koje omogućuju dodavanje, dohvat, ažuriranje i prikaz lokacija prema kategorijama.
 
-Datoteke:
-- `tests/backend/locations/locations.test.js` - Testiranje rute za dodavanje, dohvat i ažuriranje lokacija.
-
-Opis testova:
+: `tests/locations/location.test.js`
+- Testiranje rute za dodavanje, dohvat i ažuriranje lokacija.
 
 #### Test 1: Dodaj novu lokaciju
 - Cilj: Provjeriti API rutu za dodavanje nove lokacije.
@@ -85,10 +96,9 @@ Opis testova:
 ### 3. **Testovi za recenzije**
 Testovi za API rute koje omogućuju stvaranje, dohvat, ažuriranje i brisanje recenzija.
 
-Datoteke:
-- `tests/backend/reviews/reviews.test.js` - Testiranje rute za stvaranje, dohvat, ažuriranje i brisanje recenzija.
+Datoteka: `tests/review.test.js`
+- Testiranje rute za stvaranje, dohvat, ažuriranje i brisanje recenzija.
 
-Opis testova:
 
 #### Test 1: Stvori novu recenziju
 - Cilj: Provjeriti API rutu za stvaranje nove recenzije.
@@ -137,11 +147,8 @@ Opis testova:
 ### 4. **Testovi za korisnike**
 Testovi za API rute koje omogućuju stvaranje korisnika, provjeru valjanosti podataka i provjeru postojanja korisničkog imena ili emaila.
 
-Datoteke:
-- `tests/backend/users/users.test.js` - Testiranje rute za korisnike, uključujući stvaranje korisnika, provjeru ponovljenih emailova i korisničkih imena.
-
-Opis testova:
-
+Datoteka: `tests/user.test.js`
+- Testiranje rute za korisnike, uključujući stvaranje korisnika, provjeru ponovljenih emailova i korisničkih imena.
 
 #### Test 1: Stvori novog korisnika
 - Cilj: Provjeriti API rutu za stvaranje novog korisnika.
@@ -188,19 +195,30 @@ Opis testova:
 
 
 
+# Frontend
 
+## 1. Opis frontend aplikacije
+Frontend aplikacija je izgrađena pomoću **React.js**, **React Router** i **Axios** za povezivanje s backend API-jem. Omogućuje korisnicima interakciju s aplikacijom kroz pregled kategorija, lokacija, recenzija i korisničkog profila, kao i dodavanje novih recenzija.
 
-## Frontend
+## 2. Tehnologije i alati
+- **React.js**: Za izradu korisničkog sučelja i upravljanje stanjima.
+- **React Router**: Za upravljanje navigacijom unutar aplikacije.
+- **CSS**: Za stiliziranje korisničkog sučelja.
+- **Jest**: Za testiranje frontend funkcionalnosti.
+
+## 3. Pokretanje testova
+1. Pokrenite aplikaciju u terminalu u glavnoj mapi projekta koristeći naredbu: `npm run all`
+2. U drugoj kartici terminala u mapi `frontend/` koristite naredbu: `npm run test`
+
+## 4. Opis testova
 
 ### 1. **Testovi za registraciju**
 Testovi za funkcionalnost registracije korisnika.
 
-Datoteke:
-- `signup.test.jsx` - Testiranje renderiranja i funkcionalnosti registracijske forme.
+Datoteka: `frontend/tests/signup.test.jsx`
+- Testiranje renderiranja i funkcionalnosti registracijske forme.
 
 #### Unit testovi:
-
-Opis testova:
 
 #### Test 1: Renderiranje registracijske forme
 - Cilj: Provjeriti ispravno renderiranje registracijske forme.
@@ -248,10 +266,8 @@ Opis testova:
 ### 2. **Testovi za Review List**
 Testovi za funkcionalnost prikaza recenzija.
 
-Datoteke:
-- `reviewlist.test.jsx` - Testiranje prikaza recenzija.
-
-Opis testova:
+Datoteka: `frontend/tests/reviewlist.test.jsx`
+- Testiranje prikaza recenzija.
 
 #### Unit testovi:
 
@@ -293,10 +309,8 @@ Opis testova:
 ### 3. **Testovi za Profile**
 Testovi za profil korisnika.
 
-Datoteke:
-- `profile.test.jsx` - Testiranje prikaza i funkcionalnosti korisničkog profila.
-
-Opis testova:
+Datoteka: `frontend/tests/profile.test.jsx`
+- Testiranje prikaza i funkcionalnosti korisničkog profila.
 
 #### Funkcionalni testovi:
 
@@ -355,10 +369,9 @@ Opis testova:
 ### 4. **Testovi za Navbar**
 Testovi za navigacijski bar.
 
-Datoteke:
-- `navbar.test.jsx` - Testiranje funkcionalnosti i renderiranja navigacijskog bara.
+Datoteka: `frontend/tests/navbar.test.jsx`
+- Testiranje funkcionalnosti i renderiranja navigacijskog bara.
 
-Opis testova:
 
 #### Funkcionalni testovi:
 
@@ -397,10 +410,9 @@ Opis testova:
 ### 5. **Testovi za Login**
 Testovi za funkcionalnost prijave korisnika.
 
-Datoteke:
- - `login.test.jsx` - Testiranje login forme.
+Datoteka: `frontend/tests/login.test.jsx`
+- Testiranje login forme.
 
-Opis testova:
 
 #### Unit testovi:
 
@@ -447,10 +459,9 @@ Opis testova:
 ### 6. **Testovi za Category Review**
 Testovi za prikazivanje recenzija po kategorijama.
 
-Datoteke:
- - `categoryreview.test.jsx` - Testiranje kategorije i njezinih recenzija.
+Datoteka: `frontend/tests/categoryreview.test.jsx`
+ - Testiranje kategorije i njezinih recenzija.
 
-Opis testova:
 
 #### Unit testovi:
 
@@ -509,10 +520,8 @@ Opis testova:
 ### 7. **Testovi za Categories**
 Testovi za kategorije.
 
-Datoteke:
- - `categories.test.jsx` - Testiranje prikaza kategorija.
-
-Opis testova:
+Datoteka: `frontend/tests/categories.test.jsx`
+ - Testiranje prikaza kategorija.
 
 #### Unit testovi:
 
@@ -547,10 +556,9 @@ Opis testova:
 ### 8. **Testovi za App**
 Testovi za glavni aplikacijski render.
 
-Datoteke:
-- `app.test.jsx` - Testiranje glavne aplikacije.
+Datoteka: `frontend/tests/app.test.jsx`
+- Testiranje glavne aplikacije.
 
-Opis testova:
 
 #### Funkcionalni testovi:
 
@@ -589,10 +597,8 @@ Opis testova:
 ### 9. **Testovi za Add Review**
 Testovi za dodavanje recenzija.
 
-Datoteke:
- - `addreview.test.jsx` - Testiranje funkcionalnosti dodavanja recenzija.
-
-Opis testova:
+Datoteka: `frontend/tests/addreview.test.jsx`
+ - Testiranje funkcionalnosti dodavanja recenzija.
 
 #### Funkcionalni testovi:
 
@@ -614,7 +620,7 @@ Opis testova:
 ##### Očekivani rezultat:
  - Recenzija treba biti uspješno dodana s postojećom lokacijom.
 
-####Test 2: Dodavanje recenzije s novom lokacijom
+#### Test 2: Dodavanje recenzije s novom lokacijom
  - Cilj: Provjeriti ispravno dodavanje recenzije s novom lokacijom.
 ##### Opis:
  1. Test simulira unos podataka u formu za recenziju i dodavanje nove lokacije.
@@ -632,16 +638,35 @@ Opis testova:
 ##### Očekivani rezultat:
  - Treba biti prikazana poruka o grešci prilikom dodavanja recenzije.
 
+# Testiranje cijele aplikacije
 
-## Testiranje cijele aplikacije
+
+## 1. Opis aplikacije
+Aplikacija koristi **MERN stack** (MongoDB, Express.js, React.js, Node.js) za pružanje funkcionalnosti korisnicima. Omogućuje registraciju, prijavu, pregled profila, dodavanje, uređivanje i brisanje recenzija, kao i upravljanje kategorijama i lokacijama. Aplikacija je dizajnirana kako bi omogućila korisnicima jednostavno iskustvo pregledavanja i interakcije s podacima, te je testirana kroz end-to-end testove kako bi se osigurala ispravnost svih funkcionalnosti.
+
+## 2. Tehnologije i alati
+- **MongoDB**: Za pohranu podataka.
+- **Mongoose**: Za rad s MongoDB bazom podataka.
+- **Express.js**: Za izradu API-ja i upravljanje HTTP zahtjevima.
+- **Node.js**: Za backend server.
+- **React.js**: Za izradu frontend sučelja.
+- **Cypress**: Za end-to-end testiranje cijele aplikacije.
+
+
+## 3. Pokretanje testova
+Za pokretanje end-to-end testova u aplikaciji koristi se **Cypress**.
+1. U `frontend/` mapi projekta pokrenite sljedeću naredbu: `npx cypress open` .
+2. U drugoj kartici terminala u glavnoj mapi projekta pokrenite naredbu `npm run all` za pokretanje cijele aplikacije.
+3. Kada se otvori Cypress aplikacija, odaberite End-to-end testing.
+4. Odaberite preglednik u kojem želite testirati i nastavite dalje.
+5. Odaberite koju od 3 datoteke žeite testirati klikom na pojedinu test datoteku.
+
 
 ### 1: **Testovi za prijavu korisnika**
 Testovi za provjeru funkcionalnosti prijave korisnika na aplikaciju.
 
-Datoteke:
- - `tests/frontend/login.cy.jsx` - Testiranje funkcionalnosti prijave.
-
-Opis testova:
+Datoteka: `frontend/cypress/e2e/login.cy.jsx`
+ - Testiranje funkcionalnosti prijave.
 
 #### Test 1: Uspješna prijava s točnim korisničkim podacima
  - Cilj: Provjeriti ispravnost prijave korisnika s točnim podacima.
@@ -676,10 +701,8 @@ Opis testova:
 ### 2: **Testovi za profil korisnika**
 Testovi za provjeru funkcionalnosti stranice profila korisnika.
 
-Datoteke:
- - `tests/frontend/profile.cy.jsx` - Testiranje funkcionalnosti profila.
-
-Opis testova:
+Datoteka: `frontend/cypress/e2e/profile.cy.jsx`
+ - Testiranje funkcionalnosti profila.
 
 #### Test 1: Učitaj profil s poljima za korisničko ime, email i lozinku
  - Cilj: Provjeriti ispravnost učitavanja podataka na stranici profila.
@@ -750,10 +773,8 @@ Opis testova:
 ### 3: **Testovi za registraciju korisnika**
 Testovi za provjeru funkcionalnosti registracije korisnika.
 
-Datoteke:
- - `tests/frontend/signup.cy.jsx` - Testiranje funkcionalnosti registracije korisnika.
-
-Opis testova:
+Datoteka: `frontend/cypress/e2e/signup.cy.jsx`
+ -  Testiranje funkcionalnosti registracije korisnika.
 
 #### Test 1: Uspješna registracija novog korisnika
  - Cilj:  Provjeriti ispravnost registracije s točnim podacima.
