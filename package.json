@@ -8,7 +8,7 @@
     "dev": "nodemon backend/server",
     "client": "npm run dev --prefix frontend",
     "all": "concurrently \"npm run dev\" \"npm run client\"",
-    "start": "npm install && concurrently \"cd frontend && npm install\" && echo Završene instalacije && npm run all"
+    "start": "mv x.env .env && npm install && concurrently \"cd frontend && npm install\" && echo Završene instalacije && npm run all"
   },
   "type": "module",
   "keywords": [],
