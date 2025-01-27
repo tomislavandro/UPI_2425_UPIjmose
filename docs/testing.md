@@ -16,6 +16,7 @@ Backend aplikacija pruža API rute za upravljanje kategorijama, korisnicima, rec
  Za pokretanje testova u glavnoj mapi projekta koristite naredbu: `npm test`
 
 ## 4. Opis testova:
+- Svi testovi rađeni na backendu su **integracijski** testovi.
 
 ### 1. **Testovi za kategorije**
 Testovi za API rute koje omogućuju pregled svih kategorija i stvaranje novih kategorija.
